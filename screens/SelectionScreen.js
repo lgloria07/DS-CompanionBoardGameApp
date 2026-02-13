@@ -2,7 +2,9 @@ import React from "react";
 import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { personajes } from "../data/personajes";
 
-export default function SeleccionScreen({ navigation, equipo, setEquipo }) {
+export default function SeleccionScreen({ navigation, equipo, setEquipo, category }) {
+
+  const personajesFiltrados = personajes.filter((p) => p.category === category);
 
   const agregarAlEquipo = (personaje) => {
 
@@ -41,10 +43,10 @@ export default function SeleccionScreen({ navigation, equipo, setEquipo }) {
       <Text style={styles.titulo}>Selección de personajes</Text>
 
       <FlatList
-        data={personajes}
+        data={personajesFiltrados}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
-        numColumns={3}
+        numColumns={2}
         contentContainerStyle={{ paddingBottom: 20 }}
       />
 
