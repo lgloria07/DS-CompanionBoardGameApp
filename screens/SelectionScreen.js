@@ -32,7 +32,7 @@ export default function SeleccionScreen({ navigation, equipo, setEquipo }) {
           </Text>
         </TouchableOpacity>
       </View>
-    );
+      );
   };
 
   return (
@@ -40,29 +40,21 @@ export default function SeleccionScreen({ navigation, equipo, setEquipo }) {
 
       <Text style={styles.titulo}>Selección de personajes</Text>
 
-      <TouchableOpacity 
-        style={styles.verEquipo}
-        onPress={() => navigation.navigate("Team")}
-      >
-        <Text style={{ color: "white", fontWeight: "bold" }}>
-          Ver Equipo ({equipo.length})
-        </Text>
-      </TouchableOpacity>
-
       <FlatList
         data={personajes}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
         numColumns={3}
         contentContainerStyle={{ paddingBottom: 20 }}
       />
 
     </View>
-  );
+);
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 35,
     flex: 1,
     padding: 10,
     backgroundColor: "#fff"
@@ -73,14 +65,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 10
-  },
-
-  verEquipo: {
-    backgroundColor: "#2196F3",
-    padding: 10,
-    borderRadius: 10,
-    alignItems: "center",
-    marginBottom: 15
   },
 
   card: {

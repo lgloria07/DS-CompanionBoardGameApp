@@ -13,7 +13,6 @@ export default function TeamScreen({ equipo, setEquipo, navigation }) {
           style: "destructive",
           onPress: () => {
             setEquipo([]); 
-            navigation.navigate("Seleccion");
           }       
         }
       ]
@@ -41,16 +40,6 @@ export default function TeamScreen({ equipo, setEquipo, navigation }) {
   return (
     <View style={styles.container}>
 
-      {/* Botón volver */}
-      <TouchableOpacity 
-        style={styles.volver}
-        onPress={() => navigation.navigate("Seleccion")}
-      >
-        <Text style={styles.botonTexto}>
-          Seguir agregando
-        </Text>
-      </TouchableOpacity>
-
       {/* Botón reiniciar */}
       <TouchableOpacity 
         style={styles.reiniciar}
@@ -73,6 +62,7 @@ export default function TeamScreen({ equipo, setEquipo, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 35,
     flex: 1,
     padding: 10,
     backgroundColor: "#fff"

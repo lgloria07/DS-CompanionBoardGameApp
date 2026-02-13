@@ -35,7 +35,7 @@ export const personajes = [
     nombre: "Obanai Iguro (Mago)",
     imagen: require("../assets/characters/iguro.jpg"),
     vidaMax: 30,
-    pasiva: "Si falla un ataque, inflige 3 de daño)",
+    pasiva: "Si falla un ataque, inflige 3 de daño",
     habilidades: [
       { dado: 2, nombre: "Primera postura: Corte de serpiente retorcida", descripcion: "Inflige 4 de daño y tienes +1 en tu siguiente tirada " },
       { dado: 5, nombre: "Segunda postura: Espiral de serpiente inmovilizadora", descripcion: "Inflige 10 de daño y tu siguiente ataque tiene +5" },
