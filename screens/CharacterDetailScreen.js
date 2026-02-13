@@ -17,11 +17,11 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
   const [modo, setModo] = useState(null); // "sumar" o "restar"
 
   const coloresHabilidades = [
-    "#e3f2fd",
-    "#fff8e1",
-    "#e8f5e9",
-    "#f3e5f5",
-    "#ffebee",
+    "#A3A692",
+    "#DBE675",
+    "#81B0E3",
+    "#81E397",
+    "#E38181",
   ];
 
   const aplicarCambio = () => {
