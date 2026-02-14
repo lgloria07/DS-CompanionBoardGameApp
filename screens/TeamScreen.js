@@ -22,7 +22,14 @@ export default function TeamScreen({ equipo, setEquipo, navigation }) {
   const renderItem = ({ item }) => (
   <TouchableOpacity 
     style={styles.card}
-    onPress={() => navigation.navigate("CharacterDetail", { personaje: item })}
+    onPress={() => {
+      if (item.demonios) {
+        navigation.navigate("HantenguDetail", { personaje: item });
+      } else {
+        navigation.navigate("CharacterDetail", { personaje: item });
+      }
+    }}
+
   >
     <Image source={item.imagen} style={styles.image} />
 

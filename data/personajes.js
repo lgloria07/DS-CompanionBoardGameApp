@@ -105,6 +105,61 @@ export const personajes = [
     ]
   },
   {
+    id: 11,
+    category: "demon",
+    tipo: "invocador",
+    nombre: "Hantengu",
+    imagen: require("../assets/characters/hangentu.webp"),
+    vidaMax: 1,
+    vidaActual: 1,
+
+    pasiva:
+      "Al recibir daño, crea un nuevo demonio en otra casilla. No puede morir hasta que todos su demonios hayan sido derrotados, inflige 1 de daño cada ronda",
+
+    demonios: [
+      {
+        id: 111,
+        nombre: "Felicidad",
+        imagen: require("../assets/characters/felicidad.jpg"),
+        vidaMax: 8,
+        vidaActual: 8,
+        habilidad: "Inflige 3 de daño",
+      },
+      {
+        id: 112,
+        nombre: "Tristeza",
+        imagen: require("../assets/characters/tristeza.jpg"),
+        vidaMax: 12,
+        vidaActual: 12,
+        habilidad: "Cura 6 a otro demonio de Hantengu",
+      },
+      {
+        id: 113,
+        nombre: "Ira",
+        imagen: require("../assets/characters/ira.jpg"),
+        vidaMax: 15,
+        vidaActual: 15,
+        habilidad:"Inflige 4 a todos los cazadores que estén luchando contra Hantengu",
+      },
+      {
+        id: 114,
+        nombre: "Placer",
+        imagen: require("../assets/characters/placer.jpg"),
+        vidaMax: 18,
+        vidaActual: 18,
+        habilidad:"Pasiva: Puede estar sin cazadores. Activa: Inflige 3 de daño y arroja al enemigo al lado opuesto del mapa",
+      },
+      {
+        id: 115,
+        nombre: "Odio",
+        imagen: require("../assets/characters/odio.jpg"),
+        vidaMax: 20,
+        vidaActual: 20,
+        habilidad:"Activa los poderes de todos los otros demonios de Hantengu",
+      },
+    ],
+  },
+  {
     id: 8,
     category: "demon",
     nombre: "Gyokko",
@@ -147,21 +202,6 @@ export const personajes = [
       { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Inflige 7 de daño a su enemigo y al de Gyutaro" },
       { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Inflige 8 de daño a todos los enemigos"},
       { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Gyutaro tiene +5 de daño"}
-    ]
-  },
-  {
-    id: 11,
-    category: "demon",
-    nombre: "Hangentu",
-    imagen: require("../assets/characters/hangentu.webp"),
-    vidaMax: 1,
-    pasiva: "Al recibir daño, crea un nuevo demonio en otra casilla, no puede morir hasta que sus demonios hayan sido derrotados",
-    habilidades: [
-      { dado: 2, nombre: "Felicidad", vida: 8, descripcion: "Inflige 3 de daño" },
-      { dado: 4, nombre: "Tristeza",vida: 8, descripcion: "Cura 6 a otro demonio de Hantengu" },
-      { dado: 6, nombre: "Ira", vida: 8,descripcion: "Inflige 4 a todos los cazadores que estén luchando contra Hantengu" },
-      { dado: 8, nombre: "Placer", vida: 8,descripcion: "Pasiva: Puede estar sin cazadores. Inflige 3 de daño y arroja al enemigo al lado opuesto del mapa "},
-      { dado: 10, nombre: "Odio", vida: 8,descripcion: "Activa los poderes de todos los otros demonios "}
     ]
   },
   {

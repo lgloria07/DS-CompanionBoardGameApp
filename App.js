@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { useState, useRef } from 'react';
 
+import HantenguDetailScreen from './screens/HantenguDetailScreen';
 import SeleccionScreen from './screens/SelectionScreen';
 import TeamScreen from './screens/TeamScreen';
 import CharacterDetailScreen from './screens/CharacterDetailScreen';
@@ -176,6 +177,19 @@ export default function App() {
             />
           )}
         </Stack.Screen>
+        <Stack.Screen
+          name="HantenguDetail"
+          options={{ title: "Detalle de Hantengu" }}
+        >
+          {(props) => (
+            <HantenguDetailScreen
+              {...props}
+              equipo={equipo}
+              setEquipo={setEquipo}
+            />
+          )}
+        </Stack.Screen>
+
 
       </Stack.Navigator>
     </NavigationContainer>
