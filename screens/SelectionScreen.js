@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { personajes } from "../data/personajes";
 
 export default function SeleccionScreen({ navigation, equipo, setEquipo, category }) {
@@ -7,14 +7,37 @@ export default function SeleccionScreen({ navigation, equipo, setEquipo, categor
   const personajesFiltrados = personajes.filter((p) => p.category === category);
 
   const agregarAlEquipo = (personaje) => {
+    const yaExiste = equipo.find(p => p.id === personaje.id);
+    if (yaExiste) {
+      // 🔥 Mostrar confirmación antes de eliminar
+      Alert.alert(
+        "Quitar personaje",
+        `¿Seguro que quieres quitar a ${personaje.nombre} del equipo?`,
+        [
+          {
+            text: "Cancelar",
+            style: "cancel"
+          },
+          {
+            text: "Quitar",
+            style: "destructive",
+            onPress: () => {
+              setEquipo(equipo.filter(p => p.id !== personaje.id));
+            }
+          }
+        ]
+      );
 
-    if (equipo.find(p => p.id === personaje.id)) return;
+    } else {
 
-    setEquipo([
-      ...equipo,
-      { ...personaje, vidaActual: personaje.vidaMax }
-    ]);
+      setEquipo([
+        ...equipo,
+        { ...personaje, vidaActual: personaje.vidaMax }
+      ]);
+
+    }
   };
+
 
   const renderItem = ({ item }) => {
 

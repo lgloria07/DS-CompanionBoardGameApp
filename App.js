@@ -4,7 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import LoginScreen from "./screens/LoginScreen";
+import RulesScreen from "./screens/RulesScreen";
+
+
+
 
 import HantenguDetailScreen from './screens/HantenguDetailScreen';
 import SeleccionScreen from './screens/SelectionScreen';
@@ -100,9 +107,12 @@ function TabsScreen({ equipo, setEquipo, route }) {
 
           if (route.name === "Seleccion") {
             iconName = "people";
-          } else if (route.name === "Team") {
+        } else if (route.name === "Team") {
             iconName = "shield";
-          }
+        } else if (route.name === "Rules") {
+            iconName = "book";
+        }
+
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -131,6 +141,12 @@ function TabsScreen({ equipo, setEquipo, route }) {
           />
         )}
       </Tab.Screen>
+      <Tab.Screen
+        name="Rules"
+        component={RulesScreen}
+        options={{ title: "Reglas" }}
+      />
+
     </Tab.Navigator>
   );
 }
@@ -140,6 +156,39 @@ function TabsScreen({ equipo, setEquipo, route }) {
 ========================= */
 export default function App() {
   const [equipo, setEquipo] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
+  const checkLogin = async () => {
+    const user = await AsyncStorage.getItem("user");
+    const savedTeam = await AsyncStorage.getItem("equipo");
+
+    if (user) {
+      setIsLoggedIn(true);
+    }
+
+    if (savedTeam) {
+      setEquipo(JSON.parse(savedTeam));
+    }
+
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (!loading) {
+      AsyncStorage.setItem("equipo", JSON.stringify(equipo));
+    }
+  }, [equipo]);
+
+  if (loading) return null;
+
+  if (!isLoggedIn) {
+    return <LoginScreen setIsLoggedIn={setIsLoggedIn} />;
+  }
 
   return (
     <NavigationContainer>
@@ -164,7 +213,6 @@ export default function App() {
           )}
         </Stack.Screen>
 
-        {/* 🔥 AQUÍ ESTÁ EL CAMBIO IMPORTANTE */}
         <Stack.Screen
           name="CharacterDetail"
           options={{ title: "Detalle del personaje" }}
@@ -177,6 +225,7 @@ export default function App() {
             />
           )}
         </Stack.Screen>
+
         <Stack.Screen
           name="HantenguDetail"
           options={{ title: "Detalle de Hantengu" }}
@@ -189,7 +238,6 @@ export default function App() {
             />
           )}
         </Stack.Screen>
-
 
       </Stack.Navigator>
     </NavigationContainer>

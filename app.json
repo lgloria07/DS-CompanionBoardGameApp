@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "BD Companion",
+    "name": "Demon Slayer BG",
     "slug": "BoardGameCompanion",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,8 +9,8 @@
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/monster.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#000000"
     },
     "ios": {
       "supportsTablet": true
