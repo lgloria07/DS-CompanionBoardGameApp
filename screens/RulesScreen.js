@@ -15,7 +15,7 @@ export default function RulesScreen() {
 
       <View style={styles.card}>
         <Text style={styles.rule}>
-        El tablero se armará 1 pieza por jugar (hasta completar las 20 piezas). Empieza el demonio.
+        El tablero se armará 1 pieza por jugador (hasta completar las 20 piezas). Empieza el demonio.
         </Text>
       </View>
 
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     fontWeight: "bold",
-    textAlign: "center",   // 🔥 centrado
+    textAlign: "center",   
     marginBottom: 25,
     color: "#333",
   },
@@ -138,12 +138,15 @@ const styles = StyleSheet.create({
     padding: 18,
     borderRadius: 12,
     marginBottom: 15,
-    elevation: 3, // sombra Android
-    shadowColor: "#000", // sombra iOS
+    elevation: 3, 
+    shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
     alignContent: "center",
+    display: "flex-start",
+    flexDirection: "row",
+
   },
   rule: {
     fontSize: 15,
