@@ -10,11 +10,22 @@ import {
 } from "react-native";
 
 export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
+
   const { personaje } = route.params;
 
   const [vidaActual, setVidaActual] = useState(personaje.vidaActual);
   const [cantidad, setCantidad] = useState("");
-  const [modo, setModo] = useState(null); // "sumar" o "restar"
+  const [modo, setModo] = useState(null);
+
+  const [efectos, setEfectos] = useState(() => ({
+    ataqueExtra: "",
+    curacionRonda: "",
+    puntuacionExtra: "",
+    envenenamiento: "",
+    especial:
+      personaje.efectoEspecial?.tipo === "boolean" ? false : "",
+  }));
+
 
   const coloresHabilidades = [
     "#A3A692",
@@ -25,37 +36,34 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
   ];
 
   const aplicarCambio = () => {
-  const numero = parseInt(cantidad);
+    const numero = parseInt(cantidad);
 
-  if (isNaN(numero) || numero <= 0) return;
+    if (isNaN(numero) || numero <= 0) return;
 
-  let nuevaVida =
-    modo === "sumar"
-      ? vidaActual + numero
-      : vidaActual - numero;
+    let nuevaVida =
+      modo === "sumar"
+        ? vidaActual + numero
+        : vidaActual - numero;
 
-  if (nuevaVida > personaje.vidaMax)
-    nuevaVida = personaje.vidaMax;
+    if (nuevaVida > personaje.vidaMax)
+      nuevaVida = personaje.vidaMax;
 
-  if (nuevaVida < 0)
-    nuevaVida = 0;
+    if (nuevaVida < 0)
+      nuevaVida = 0;
 
-  // 🔥 ACTUALIZAR ESTADO LOCAL
-  setVidaActual(nuevaVida);
+    setVidaActual(nuevaVida);
 
-  // 🔥 ACTUALIZAR EL EQUIPO GLOBAL
-  const equipoActualizado = equipo.map((p) =>
-    p.id === personaje.id
-      ? { ...p, vidaActual: nuevaVida }
-      : p
-  );
+    const equipoActualizado = equipo.map((p) =>
+      p.id === personaje.id
+        ? { ...p, vidaActual: nuevaVida }
+        : p
+    );
 
-  setEquipo(equipoActualizado);
+    setEquipo(equipoActualizado);
 
-  setCantidad("");
-  setModo(null);
-};
-
+    setCantidad("");
+    setModo(null);
+  };
 
   return (
     <ScrollView
@@ -64,7 +72,91 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.card}>
-        <Image source={personaje.imagen} style={styles.image} />
+
+        {/* TOP SECTION */}
+        <View style={styles.topSection}>
+          <Image source={personaje.imagen} style={styles.image} />
+
+          <View style={styles.efectosContainer}>
+
+            <Text style={styles.efectoLabel}>Ataque extra</Text>
+            <TextInput
+              style={styles.efectoInput}
+              keyboardType="numeric"
+              value={efectos.ataqueExtra}
+              onChangeText={(text) =>
+                setEfectos({ ...efectos, ataqueExtra: text })
+              }
+            />
+
+            <Text style={styles.efectoLabel}>Curación / ronda</Text>
+            <TextInput
+              style={styles.efectoInput}
+              keyboardType="numeric"
+              value={efectos.curacionRonda}
+              onChangeText={(text) =>
+                setEfectos({ ...efectos, curacionRonda: text })
+              }
+            />
+
+            <Text style={styles.efectoLabel}>Puntuación extra/reducida</Text>
+            <TextInput
+              style={styles.efectoInput}
+              keyboardType="numeric"
+              value={efectos.puntuacionExtra}
+              onChangeText={(text) =>
+                setEfectos({ ...efectos, puntuacionExtra: text })
+              }
+            />
+
+            <Text style={styles.efectoLabel}>Envenenamiento</Text>
+            <TextInput
+              style={styles.efectoInput}
+              keyboardType="numeric"
+              value={efectos.envenenamiento}
+              onChangeText={(text) =>
+                setEfectos({ ...efectos, envenenamiento: text })
+              }
+            />
+
+            {personaje.efectoEspecial && (
+              <>
+                <Text style={styles.efectoLabel}>
+                  {personaje.efectoEspecial.nombre}
+                </Text>
+
+                {personaje.efectoEspecial.tipo === "boolean" ? (
+                  <TouchableOpacity
+                    style={[
+                      styles.checkbox,
+                      efectos.especial && styles.checkboxActivo
+                    ]}
+                    onPress={() =>
+                      setEfectos({
+                        ...efectos,
+                        especial: !efectos.especial
+                      })
+                    }
+                  >
+                    <Text style={styles.checkboxTexto}>
+                      {efectos.especial ? "✓ Activo" : "Activar"}
+                    </Text>
+                  </TouchableOpacity>
+                ) : (
+                  <TextInput
+                    style={styles.efectoInput}
+                    keyboardType="numeric"
+                    value={efectos.especial}
+                    onChangeText={(text) =>
+                      setEfectos({ ...efectos, especial: text })
+                    }
+                  />
+                )}
+              </>
+            )}
+
+          </View>
+        </View>
 
         <Text style={styles.nombre}>{personaje.nombre}</Text>
 
@@ -91,7 +183,7 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
           </TouchableOpacity>
         </View>
 
-        {/* INPUT */}
+        {/* INPUT VIDA */}
         {modo && (
           <View style={styles.inputContainer}>
             <TextInput
@@ -154,14 +246,16 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
           </View>
         </View>
       ))}
+
     </ScrollView>
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f2f2f2",
+    backgroundColor: "#d6c9c9",
     padding: 15,
   },
 
@@ -313,5 +407,53 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "center",
   },
+    topSection: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    marginBottom: 15,
+  },
+
+  efectosContainer: {
+    flex: 1,
+    marginLeft: 15,
+  },
+
+  efectoLabel: {
+    fontSize: 12,
+    fontWeight: "600",
+    marginTop: 5,
+  },
+
+  efectoInput: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    marginBottom: 4,
+    fontSize: 12,
+    textAlign: "center",
+    backgroundColor: "#fafafa",
+  },
+  checkbox: {
+    backgroundColor: "#444",
+    padding: 8,
+    borderRadius: 6,
+    alignItems: "center",
+    marginBottom: 8,
+  },
+
+  checkboxActivo: {
+    backgroundColor: "#4CAF50",
+  },
+
+  checkboxTexto: {
+    color: "white",
+    fontWeight: "bold",
+  },
+
+
 });
   
