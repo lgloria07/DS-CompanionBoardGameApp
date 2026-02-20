@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import {
   View,
   Text,
@@ -17,23 +19,69 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
   const [cantidad, setCantidad] = useState("");
   const [modo, setModo] = useState(null);
 
-  const [efectos, setEfectos] = useState(() => ({
+  const [efectos, setEfectos] = useState({
     ataqueExtra: "",
     curacionRonda: "",
     puntuacionExtra: "",
     envenenamiento: "",
+    escudo: "",
+    resistencia: "",
     especial:
       personaje.efectoEspecial?.tipo === "boolean" ? false : "",
-  }));
+  });
 
+  /* =========================
+        GUARDAR EFECTOS
+  ========================= */
 
-  const coloresHabilidades = [
-    "#A3A692",
-    "#DBE675",
-    "#81B0E3",
-    "#81E397",
-    "#E38181",
-  ];
+  const guardarEfectos = async (nuevosEfectos) => {
+    try {
+      await AsyncStorage.setItem(
+        `efectos_${personaje.id}`,
+        JSON.stringify(nuevosEfectos)
+      );
+    } catch (error) {
+      console.log("Error guardando efectos", error);
+    }
+  };
+
+  /* =========================
+        CARGAR EFECTOS
+  ========================= */
+
+  const cargarEfectos = async () => {
+    try {
+      const datosGuardados = await AsyncStorage.getItem(
+        `efectos_${personaje.id}`
+      );
+
+      if (datosGuardados !== null) {
+        setEfectos(JSON.parse(datosGuardados));
+      }
+    } catch (error) {
+      console.log("Error cargando efectos", error);
+    }
+  };
+
+  /* =========================
+        AL ABRIR PANTALLA
+  ========================= */
+
+  useEffect(() => {
+    cargarEfectos();
+  }, []);
+
+  /* =========================
+        GUARDAR AUTOMÁTICO
+  ========================= */
+
+  useEffect(() => {
+    guardarEfectos(efectos);
+  }, [efectos]);
+
+  /* =========================
+        VIDA
+  ========================= */
 
   const aplicarCambio = () => {
     const numero = parseInt(cantidad);
@@ -64,6 +112,14 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
     setCantidad("");
     setModo(null);
   };
+
+  const coloresHabilidades = [
+    "#A3A692",
+    "#DBE675",
+    "#81B0E3",
+    "#81E397",
+    "#E38181",
+  ];
 
   return (
     <ScrollView
@@ -116,6 +172,26 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
               value={efectos.envenenamiento}
               onChangeText={(text) =>
                 setEfectos({ ...efectos, envenenamiento: text })
+              }
+            />
+
+            <Text style={styles.efectoLabel}>Escudo</Text>
+            <TextInput
+              style={styles.efectoInput}
+              keyboardType="numeric"
+              value={efectos.escudo}
+              onChangeText={(text) =>
+                setEfectos({ ...efectos, escudo: text })
+              }
+            />
+
+            <Text style={styles.efectoLabel}>Resistencia</Text>
+            <TextInput
+              style={styles.efectoInput}
+              keyboardType="numeric"
+              value={efectos.resistencia}
+              onChangeText={(text) =>
+                setEfectos({ ...efectos, resistencia: text })
               }
             />
 
@@ -250,7 +326,6 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
     </ScrollView>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

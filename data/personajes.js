@@ -4,7 +4,7 @@ export const personajes = [
     category: "slayer",
     type: "Tank",
     nombre: "Gyomei Himejima",
-    imagen: require("../assets/characters/gyomei.jpg"),
+    imagen: require("../assets/characters/gyomei.webp"),
     vidaMax: 55,
     pasiva: "Si es tanque, bloquea todo. Recibe 5 menos de daño",
     habilidades: [
@@ -236,7 +236,7 @@ export const personajes = [
     category: "demon",
     nombre: "Kaigaku",
     type: "Upper",
-    imagen: require("../assets/characters/kaigaku.jpg"),
+    imagen: require("../assets/characters/kaigaku.webp"),
     vidaMax: 28,
     pasiva: "Cuando un cazador llega a su casilla, automaticamente le va al jugador cazador (el resto de action points se pierden)",
     habilidades: [
@@ -309,7 +309,7 @@ export const personajes = [
     pasiva: "Si saca exactamente el numero de dados que necesita para activar su habilidad, la repite 1 vez",
     habilidades: [
       { dado: 2, nombre: "Lanzamiento Tempestuoso", descripcion: "Inflige 3 de daño" },
-      { dado: 5, nombre: "Victoria Repetida", descripcion: "Pasiva: Si mata a un enemigo, repite la habilidad que lo mato" },
+      { dado: 5, nombre: "Victoria Repetida", descripcion: "Pasiva: Si mata a un enemigo, repite la habilidad que lo mató" },
       { dado: 8, nombre: "Rebote Despiadado", descripcion: "Lanza una pelota que rebota en los enemigos (primero el tanque): 4,3,2,1" },
       { dado: 10, nombre: "Temari Demoniaco", descripcion: "Inflige (3 dados - 1) de daño"},
       { dado: 12, nombre: "Impacto brutal", descripcion: "Inflige 10 de daño"}
@@ -476,11 +476,11 @@ export const personajes = [
     vidaMax: 25,
     pasiva: "Obtiene +2 de movimiento y envenena con 1 de daño al enemigo cuando llega a un combate",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Aumenta 1 el daño del veneno" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige 4 de daño y se cura 5 de vida" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Quita todos los efectos negativos y cura 5 de vida al equipo"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Cura al equipo el daño de envenenamiento cada ronda"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Inflige 12 de daño y el enemigo no se puede curar (Permanente)"}
+      { dado: 2, nombre: "Destilación", descripcion: "Aumenta 1 el daño del veneno" },
+      { dado: 5, nombre: "Estocada Médica", descripcion: "Inflige 4 de daño y se cura 5 de vida" },
+      { dado: 8, nombre: "Antidoto del Pilar del Insecto", descripcion: "Quita todos los efectos negativos y cura 5 de vida al equipo"},
+      { dado: 10, nombre: "Regeneración Mariposa", descripcion: "Pasiva: Cura al equipo el daño de envenenamiento cada ronda"},
+      { dado: 12, nombre: "Danza del insecto", descripcion: "Inflige 12 de daño y el enemigo no se puede curar (Permanente)"}
     ]
   },
   {
@@ -489,18 +489,34 @@ export const personajes = [
     nombre: "Giyu Tomioka",
     type: "Slayer",
     imagen: require("../assets/characters/giyu.webp"),
-    vidaMax: 30,
+    vidaMax: 32,
     pasiva: "Tiene +10 de daño contra lunas",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 6 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Destruye su pasiva e inflige 25 de daño (solo se puede usar una vez)" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Inflige 7 de daño, vuelve a tirar los dados y si es >8, repite"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Inflige 10 de daño y pone un escudo al tanque de 5 de vida"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Inflige 4 de daño por cada personaje muerto"}
+      { dado: 2, nombre: "Primera Postura: Corte de la Superficie Serena", descripcion: "Inflige 6 de daño" },
+      { dado: 5, nombre: "Segunda Postura: Calma", descripcion: "Destruye su pasiva e inflige 25 de daño (solo se puede usar una vez)" },
+      { dado: 8, nombre: "Tercera Postura: Flujo Incesante", descripcion: "Inflige 7 de daño, vuelve a tirar los dados y si es más de 8, repite"},
+      { dado: 10, nombre: "Cuarta Postura: Muro de corriente Protectora", descripcion: "Inflige 10 de daño y pone un escudo al tanque de 5 de vida"},
+      { dado: 12, nombre: "Quinta Postura: Marea", descripcion: "Inflige 4 de daño por cada personaje muerto"}
     ]
   },
   {
     id: 28,
+    category: "slayer",
+    nombre: "Tanjiro Kamado",
+    type: "Slayer",
+    imagen: require("../assets/characters/tanjiro.webp"),
+    vidaMax: 35,
+    pasiva: "Si hay otro aliado en combate, Tanjiro no puede ser tanque pero tampoco puede morir.",
+    habilidades: [
+      { dado: 2, nombre: "Corte de Agua Serena", descripcion: "Inflige 6 de daño" },
+      { dado: 5, nombre: "Determinación", descripcion: "Inflige 8 de daño, cura 8 a un aliado o gana un escudo de 2 de vida" },
+      { dado: 8, nombre: "Aprendizaje", descripcion: "Tanjiro puede aprender la cuarta habilidad de un aliado en combate (Permanente), puede volver a gastar un action point en cambiar por otra habilidad"},
+      { dado: 10, nombre: "Vínculo Inquebrantable", descripcion: "Invoca a un cazador de tu elección. El y Tanjiro activan su primera habilidad"},
+      { dado: 12, nombre: "Golpe Final", descripcion: "Inflige 15 de daño (si el enemigo tiene 15 o menos de vida, esta habilidad cuesta 3 menos)"}
+    ]
+  },
+  {
+    id: 29,
     category: "slayer",
     nombre: "Tengen Uzui",
     type: "Tank",
@@ -508,15 +524,15 @@ export const personajes = [
     vidaMax: 40,
     pasiva: "Tiene +1 de movimiento e inflige 5 de daño al llegar a una casilla",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 5 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Pasiva: Si un cazador fuera a morir en el juego, sacalo de combate, cambia de lugar con el y recibe el daño (Permanente)" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Contraca con 5 de daño al ser atacado (Permanente)"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Se cura 15 y gana un escudo de 5 de vida"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Se cura 10 y recibes 4 action points"}
+      { dado: 2, nombre: "Corte Maravilloso!", descripcion: "Inflige 5 de daño" },
+      { dado: 5, nombre: "Interposición Espectacular!", descripcion: "Pasiva: Si un cazador fuera a morir en el juego, sacalo de combate, cambia de lugar con el y recibe el daño (Permanente)" },
+      { dado: 8, nombre: "Partitura Asombrosa!", descripcion: "Pasiva: Contraca con 5 de daño al ser atacado (Permanente)"},
+      { dado: 10, nombre: "Resistencia Increible!", descripcion: "Se cura 15 y gana un escudo de 5 de vida"},
+      { dado: 12, nombre: "Ritmo Perfecto!", descripcion: "Se cura 10 y recibes 4 action points"}
     ]
   },
   {
-    id: 29,
+    id: 30,
     category: "slayer",
     nombre: "Kyojuro Rengoku",
     type: "Slayer",
@@ -524,27 +540,11 @@ export const personajes = [
     vidaMax: 30,
     pasiva: "Cuando tenga 8 o menos de vida, inflige el doble de daño. La primera vez que fuera a morir, resiste el daño con 1 de vida",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 5 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Tu siguiente ataque hace (dados+5) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Inflige 5 de daño y te quema cada ronda el daño-1 (4,3,2,1)"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Inflige 14 de daño y quema un dado enemigo la siguiente ronda"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Inflige 15 de daño y la siguiente ronda tiras 3 dados"}
-    ]
-  },
-  {
-    id: 30,
-    category: "slayer",
-    nombre: "Tanjiro Kamado",
-    type: "Slayer",
-    imagen: require("../assets/characters/tanjiro.webp"),
-    vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
-    habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Primera Postura: Rugido de la llama", descripcion: "Inflige 5 de daño" },
+      { dado: 5, nombre: "Segunda Postura: Embustión", descripcion: "Tu siguiente ataque hace (dados+5) de daño" },
+      { dado: 8, nombre: "Tercera Postura: Marca Ígnea", descripcion: "Inflige 6 de daño y te quema cada ronda el daño-1 (4,3,2,1)"},
+      { dado: 10, nombre: "Cuarta postura: Corte Abrasador", descripcion: "Inflige 14 de daño y quema un dado enemigo la siguiente ronda"},
+      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Inflige el daño que quieras (max 35) a ti y al enemigo"}
     ]
   },
   {
@@ -553,14 +553,14 @@ export const personajes = [
     nombre: "Inosuke Hashibira",
     type: "Slayer",
     imagen: require("../assets/characters/inosuke.jpg"),
-    vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
+    vidaMax: 30,
+    pasiva: "Inosuke tiene dos habilidades, la primera funciona cuando tiene mas de 15 de vida, la segunda cuando tiene 15 o menos. Inosuke tiene +5 de daño / Inosuke tiene +5 de resistencia",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Colmillo impulsivo", descripcion: "Inflige 4 de daño / Se cura 4 de vida" },
+      { dado: 5, nombre: "Orgullo Salvaje", descripcion: "Pasiva: Insouke es inmune a efectos negativos (Permanente)" },
+      { dado: 8, nombre: "Carga del jabalí", descripcion: "Corre a otro combate e inflige 8 de daño al enemigo / Corre a otro combate y se cura 10 de vida"},
+      { dado: 10, nombre: "Reflejo feral", descripcion: "Inflige 12 de daño / Refleja el siguiente ataque que reciba y se cura 5"},
+      { dado: 12, nombre: "Dios de la montaña", descripcion: "Inflige 7 de daño, se cura 7, resiste 5 de daño la siguiente ronda, hace +5 en su siguiente golpe y tiene +1 en su siguiente tirada"}
     ]
   },
   {
@@ -569,30 +569,30 @@ export const personajes = [
     nombre: "Nezuko Kamado",
     type: "Tank",
     imagen: require("../assets/characters/nezuko.webp"),
-    vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
+    vidaMax: 40,
+    pasiva: "Si es tanque, cada ronda cura a su equipo detrás 5 de vida",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Sangre Demoníaca", descripcion: "Nezuko pierde 5 de vida e inflige 8 de daño" },
+      { dado: 5, nombre: "Instinto Protector", descripcion: "Pasiva: Si el demonio en combate muere, Nezuko se cura toda su vida" },
+      { dado: 8, nombre: "Sueño Regenerador", descripcion: "Nezuko se duerme (no puede ser tanque ni jugar) y cada ronda que permezca dormida se cura 8, puede despertar en cualquier momento"},
+      { dado: 10, nombre: "Arte demoniaco: Explosión de sangre", descripcion: "Nezuko pierde 8 y hace 15 de daño"},
+      { dado: 12, nombre: "Despertar del Sol", descripcion: "Pasiva: Nezuko gana +5 de resistencia, 3 de daño y 1 de curación con su pasiva (Permanente)"}
     ]
   },
   {
     id: 33,
     category: "slayer",
     nombre: "Zenitsu Agatsuma",
-    type: "Mage",
+    type: "Slayer",
     imagen: require("../assets/characters/zenitsu.jpg"),
-    vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
+    vidaMax: 30,
+    pasiva: "Si le salen dados pares, los duplica cuando se mueve. Cuando llega a una casilla de demonio tiene +2 en su tirada",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Primera Postura: Destello del Relámpago I", descripcion: "Pasiva: Si hay una mujer en combate inflige +3 (Permanente)"},
+      { dado: 5, nombre: "Primera Postura: Destello del Relámpago II", descripcion: "Inflige 7 de daño y sale del combate"},
+      { dado: 8, nombre: "Primera Postura: Destello del Relámpago III", descripcion: "Inflige 10 de daño dividido entre los demonios en juego"},
+      { dado: 10, nombre: "Primera Postura: Destello del Relámpago IV", descripcion: "Inflige 12 de daño (no gasta action point)"},
+      { dado: 12, nombre: "Primera Postura: Destello del Relámpago V", descripcion: "Tiras 3 veces los dos dados, activas la habilidad que te salga "}
     ]
   },
   {
@@ -602,13 +602,13 @@ export const personajes = [
     type: "Support",
     imagen: require("../assets/characters/kanao.webp"),
     vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
+    pasiva: "Cuando llega a un combate, cura 10 al equipo",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Brisa Floral", descripcion: "Curar 4" },
+      { dado: 5, nombre: "Moneda Aleatoria", descripcion: "Tira los dados, uno cura y otro ataca" },
+      { dado: 8, nombre: "Loto Gemelo", descripcion: "Pasiva: La curación que haga también se inflige de daño"},
+      { dado: 10, nombre: "Resplandor Sereno", descripcion: "Cura 10 de vida a un aliado en combate"},
+      { dado: 12, nombre: "Mansión de la mariposa", descripcion: "Pasiva: Por el resto del juego tira un dado y cura a un aliado (Permanente)"}
     ]
   },
   {
@@ -618,13 +618,13 @@ export const personajes = [
     type: "Slayer",
     imagen: require("../assets/characters/genya.jpg"),
     vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
+    pasiva: "Puede atacar a cualquier otro demonio en combate (hace -2 de daño)",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Disparo Impulsivo", descripcion: "Inflige 4 de daño" },
+      { dado: 5, nombre: "Recarga", descripcion: "Si logras activar tu siguiente habilidad, la activas dos veces)" },
+      { dado: 8, nombre: "Mordida de Sangre Demoníaca", descripcion: "Inflige 3 de daño, se cura 3 y tiene +1 en su proxima tirada"},
+      { dado: 10, nombre: "Devora-Demonios", descripcion: "Copia la segunda habilidad de el demonio y la usas (puede volver a activar esta habilidad para cambiarla)"},
+      { dado: 12, nombre: "Escopeta Nichirin", descripcion: "Realiza 4 disparos: 7,6,5,4"}
     ]
   },
   {
@@ -633,30 +633,30 @@ export const personajes = [
     nombre: "Yushiro y Tamayo",
     type: "Support",
     imagen: require("../assets/characters/yushirotamayo.jpg"),
-    vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
+    vidaMax: 20,
+    pasiva: "Tienen dos habilidades, puedes activar la que quieras",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Tratamiento Dual", descripcion: "Cura 3 / Un aliado tiene +1 en su proxima tirada" },
+      { dado: 5, nombre: "Barrera y Debilitación", descripcion: "Da 4 de escudo a un aliado en combate / El enemigo tiene -1 la proxima ronda" },
+      { dado: 8, nombre: "Terapia y toxinas", descripcion: " Cura a dos alidos 4 de vida / Envenena al enemigo por 1 de vida"},
+      { dado: 10, nombre: "Apoyo Estratégico", descripcion: "Tiras 3 dados puedes escoger si curar o atacar con cada dado"},
+      { dado: 12, nombre: "Sello Médico de Supresión Demoníaca", descripcion: "Pasiva: El demonio hace 6 menos de daño"}
     ]
   },
   {
     id: 37,
     category: "slayer",
     nombre: "Sabito",
-    type: "Slayer",
+    type: "Mage",
     imagen: require("../assets/characters/sabito.webp"),
-    vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
+    vidaMax: 0,
+    pasiva: "No puede agarrar cofres, activar demonios ni ser tanque, pero no tampoco puede morir (si es el ultimo cazador en combate, los cazadores pierden)",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Corte del Espíritu Persistente", descripcion: "Inflige 2 de daño"},
+      { dado: 5, nombre: "Filo del Recuerdo", descripcion: "Inflige (1 dado) de daño" },
+      { dado: 8, nombre: "Filo del Recuerdo", descripcion: "Inflige 4 de daño y el enemigo tiene -1 en su siguiente tirada"},
+      { dado: 10, nombre: "Guía Etérea", descripcion: "Pasiva: Usar a sabito no gasta action points (1 vez por ronda) (Permanente)"},
+      { dado: 12, nombre: "Voluntad Heredada del Discípulo Caído", descripcion: "Pasiva: En el combate en el que él esté, los aliados tienen +3 de daño (Permanente)"}
     ]
   },
   {
@@ -665,14 +665,14 @@ export const personajes = [
     nombre: "Hinatsuru, Makio y Suma",
     type: "Support",
     imagen: require("../assets/characters/esposas.jpg"),
-    vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
+    vidaMax: 22,
+    pasiva: "Cada ronda, si un aliado en combate tiene menos de 10 de vida, cúralo 2",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Cuidado de las Kunoichi", descripcion: "Cura 2 de vida a todos los aliados en combate" },
+      { dado: 5, nombre: "Asistencia del Trío del Sonido", descripcion: "Inflige 2 de daño, cura 2 a un aliado y tienes +1 en tu siguiente tirada" },
+      { dado: 8, nombre: "Señal de Rescate", descripcion: "Pasiva: Si ellas destapan o son jaladas por un demonio, pueden pedir ayuda al aliado mas cercano, lo traen a combate y curan 5 (Permanente) "},
+      { dado: 10, nombre: "Escuadrón de Emergencia", descripcion: "Cura 10 al tanque"},
+      { dado: 12, nombre: "Refuerzo del Distrito Rojo", descripcion: "Invoca a un cazador que no este en juego con 12 de vida (para este combate)"}
     ]
   },
   {
@@ -681,14 +681,14 @@ export const personajes = [
     nombre: "Hotaru Haganezuka",
     type: "Tank",
     imagen: require("../assets/characters/haganezuka.webp"),
-    vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
+    vidaMax: 28,
+    pasiva: "Al morir otorga un objeto que no esté en el mapa al aliado que quieras (si es maldición, no se activa)",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Temple Inquebrantable", descripcion: "Resiste 2 de daño por 2 ataques"},
+      { dado: 5, nombre: "Herrero Furioso", descripcion: "Se cura 5 de vida y hace 1 de daño" },
+      { dado: 8, nombre: "Afilado Nichirin", descripcion: "Otorga a un aliado +3 por el resto del combate"},
+      { dado: 10, nombre: "Taller Oculto", descripcion: "Duplica un objeto en combate"},
+      { dado: 12, nombre: "Pulido Obsesivo", descripcion: "Otorga +2 de daño a un aliado (Pemanente)"}
     ]
   },
   {
@@ -697,14 +697,14 @@ export const personajes = [
     nombre: "Murata",
     type: "Slayer",
     imagen: require("../assets/characters/murata.jpg"),
-    vidaMax: 25,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego",
+    vidaMax: 15,
+    pasiva: "Si Murata es de los últimos 4 sobrevivientes, tiene +10 de daño",
     habilidades: [
-      { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige (dados + cantidad de pasivas en juego) de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Pasiva: Todos los cazadores en combate obtienen +1 en sus dados"},
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Pasiva: Todos los cazadores en combate vuelven a tirar si les sale 1 en el dado"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Bloquea el valor 5 en el dado a los enemigos"}
+      { dado: 2, nombre: "Corte del Cazador Común", descripcion: "Inflige 2 de daño" },
+      { dado: 5, nombre: "Estocada Persistente", descripcion: "Inflige 4 de daño" },
+      { dado: 8, nombre: "Ataque de Espada", descripcion: "Inlfige 6 de daño"},
+      { dado: 10, nombre: "Ráfaga Desesperada", descripcion: "Hace (2 dados) de daño"},
+      { dado: 12, nombre: "Golpe Heroico", descripcion: "Inflige 12 de daño"}
     ]
   },
 ];
