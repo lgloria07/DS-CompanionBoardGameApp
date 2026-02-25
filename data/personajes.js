@@ -29,10 +29,10 @@ export const personajes = [
     pasiva: "Tienes 10 más de daño (-2 por aliado en combate)",
     habilidades: [
       { dado: 2, nombre: "Primera postura: Primer corte vendaval", descripcion: "Inflige 10 de daño a un enemigo" },
-      { dado: 5, nombre: "Segunda postura: Torbellino de polvo", descripcion: "Inflige (dados + 8) de daño" },
+      { dado: 5, nombre: "Segunda postura: Torbellino de polvo", descripcion: "Inflige (dados + 6) de daño" },
       { dado: 8, nombre: "Tercera postura: Tormenta de polvo ascendente", descripcion: "Inflige 8 de daño a un enemigo y a otro de tu elección" },
-      { dado: 10, nombre: "Cuarta postura: Garras de viento purificador", descripcion: "Pasiva: Sanemi obtiene 8 más de daño" },
-      { dado: 12, nombre: "Quinta postura: Tifón peligroso", descripcion: "Infliges 40 de daño al enemigo y 2 de daño a aliados en combate" }
+      { dado: 10, nombre: "Cuarta postura: Garras de viento purificador", descripcion: "Pasiva: Sanemi obtiene 5 más de daño (Permanente)"},
+      { dado: 12, nombre: "Quinta postura: Tifón peligroso", descripcion: "Infliges 40 de daño al enemigo y 2 de daño a aliados en combate"}
     ]
   },
   {
@@ -44,7 +44,7 @@ export const personajes = [
     vidaMax: 35,
     pasiva: "Si el enemigo tira un 3 en el dado, destruye el dado e inflige 3 de daño",
     habilidades: [
-      { dado: 2, nombre: "Primera postura: Corte de serpiente retorcida", descripcion: "Inflige 4 de daño y tienes +1 en tu siguiente tirada " },
+      { dado: 2, nombre: "Primera postura: Corte de serpiente retorcida", descripcion: "Inflige 4 de daño y tienes +2 en tu siguiente tirada " },
       { dado: 5, nombre: "Segunda postura: Espiral de serpiente inmovilizadora", descripcion: "Inflige 10 de daño y tu siguiente ataque tiene +5" },
       { dado: 8, nombre: "Tercera postura: Colmillo venenoso de serpiente pequeña", descripcion: "Pasiva: Envenena al enemigo por 4 de daño. Se cura 8 de vida" },
       { dado: 10, nombre: "Cuarta postura: Cabezas de serpientes gemelas", descripcion: "Pasiva: Usar a Iguru no gasta action points (1 vez por ronda. (Permanente)"},
@@ -60,16 +60,12 @@ export const personajes = [
     vidaMax: 100,
     pasiva: "Inflige daño igual a la tirada en los dados. El resto de demonios tiene +1 en sus dados",
     habilidades: [
-      { dado: 2, nombre: "Fuerza demoniaca", descripcion: "Inflige 10 de daño" },
-      { dado: 5, nombre: "Danza del desmembramiento", descripcion: "Inflige 13 de daño a todos los enemigos" },
-      { dado: 8, nombre: "Sangre del rey Carmesí", descripcion: "Se cura 30 de vida" },
-      { dado: 10, nombre: "Tormenta de carne ", descripcion: "Inflige 10 de daño y desbloquea a un demonio (max. 2 veces)" },
-      { dado: 12, nombre: "Sangre oscura, raíces espinozas", descripcion: "Mata al tanque e inflinge 15 de daño a todos los enemigos en combate" }
+      { dado: 2, nombre: "Fuerza demoniaca", descripcion: "Inflige 8 de daño, se cura 5"},
+      { dado: 5, nombre: "Danza del desmembramiento", descripcion: "Inflige 10 de daño a todos los enemigos en combate"},
+      { dado: 8, nombre: "Sangre del rey Carmesí", descripcion: "Se cura 30 de vida (max. 2 veces)"},
+      { dado: 10, nombre: "Tormenta de carne ", descripcion: "Inflige 15 de daño y desbloquea a un demonio (max. 2 veces)"},
+      { dado: 12, nombre: "Sangre oscura, raíces espinozas", descripcion: "Mata al tanque e inflinge 15 de daño a todos los enemigos en combate. Desbloquea a todos los demonios faltantes" }
     ],
-    efectoEspecial: {
-      nombre: "Desbloqueo de demonios",
-      tipo: "numero"
-    }
   },
   {
     id: 5,
@@ -84,7 +80,7 @@ export const personajes = [
       { dado: 5, nombre: "Resplandor de la luna sangrienta", descripcion: "Infliges 10 de daño y te curas 8" },
       { dado: 8, nombre: "Estocada bajo la luna", descripcion: "Inflige 22 de daño dividido" },
       { dado: 10, nombre: "Ataque de sangre", descripcion: "Inflige (dados*3) de daño" },
-      { dado: 12, nombre: "Danza de los seis crecientes", descripcion: "Copias el poder especial de alguno de los enemigos en combate" }
+      { dado: 12, nombre: "Danza de los seis crecientes", descripcion: "Copia y usa el poder especial de alguno de los enemigos en combate"}
     ]
   },
   {
@@ -110,12 +106,12 @@ export const personajes = [
     type: "Upper",
     imagen: require("../assets/characters/akaza.jpg"),
     vidaMax: 50,
-    pasiva: "Al recibir daño obitiene +1 de daño permanente. Solo puede morir con el poder más debil del enemigo",
+    pasiva: "Al recibir daño obitiene +1 de daño permanente (max 5). Al llegar a +5 de daño, obtiene +1 en sus dados. Solo puede morir con el poder más debil del enemigo",
     habilidades: [
       { dado: 2, nombre: "Corte sagrado demoniaco", descripcion: "Inflige 7 de daño y tiene +1 en su siguiente ataque" },
       { dado: 5, nombre: "Estilo vacío", descripcion: "Inflige 12 de daño divido y su siguiente ataque tiene +2" },
       { dado: 8, nombre: "Aguja de brújula", descripcion: "Inflige 15 de daño al enemigo más debil (menor vida) y su siguiente ataque tiene +3" },
-      { dado: 10, nombre: "Estilo de caos", descripcion: "Inflige 10 de daño al enemigo más fuerte y ambos se trasladan a una casilla de demonio vacía" },
+      { dado: 10, nombre: "Estilo de caos", descripcion: "Inflige 12 de daño al enemigo más fuerte y ambos se trasladan a una casilla de demonio vacía" },
       { dado: 12, nombre: "Destrucción total", descripcion: "Inflige 25 de daño y revive con 10 de vida. Su siguiente ataque tiene +5" }
     ],
     efectoEspecial: {
@@ -173,8 +169,8 @@ export const personajes = [
         id: 115,
         nombre: "Odio (11)",
         imagen: require("../assets/characters/odio.jpg"),
-        vidaMax: 20,
-        vidaActual: 20,
+        vidaMax: 22,
+        vidaActual: 22,
         habilidad:"Activa los poderes de todos los otros demonios de Hantengu",
       },
     ],
@@ -188,8 +184,8 @@ export const personajes = [
     vidaMax: 45,
     pasiva: "Puede moverse entre casillas de demonio desocupadas",
     habilidades: [
-      { dado: 2, nombre: "Escamas mortales", descripcion: "Inflige 5 de daño y se cura 2" },
-      { dado: 5, nombre: "10,000 peces de arcilla deslizantes", descripcion: "Inflige 10 de año (+4 por enemigo en combate)" },
+      { dado: 2, nombre: "Escamas mortales", descripcion: "Inflige 5 de daño, se cura 2, y tiene +1 en su proxima tirada" },
+      { dado: 5, nombre: "10,000 peces de arcilla deslizantes", descripcion: "Inflige 10 de daño (+4 por enemigo en combate)"},
       { dado: 8, nombre: "Peces asesinos: Centenar de Agujas", descripcion: "Pasiva: Envenena a los enemigos en el escenario (los enemigos en combate se dividen 8 de daño cada ronda)" },
       { dado: 10, nombre: "Forma final perfeccionada", descripcion: "Pasiva: Recibe 3 menos de daño, e inflige 2 más de daño (incluyendo veneno)" },
       { dado: 12, nombre: "Jarrón de agua infernal", descripcion: "Encierra en un jarrón a un enemigo en combate (le inflige -3 de vida por ronda y no puede actuar hasta que Gyokko muera)"}
@@ -233,13 +229,13 @@ export const personajes = [
     nombre: "Kaigaku",
     type: "Upper",
     imagen: require("../assets/characters/kaigaku.webp"),
-    vidaMax: 28,
+    vidaMax: 30,
     pasiva: "Cuando un cazador llega a su casilla, automaticamente le va al jugador cazador (el resto de action points se pierden)",
     habilidades: [
-      { dado: 2, nombre: "Primera postura: Descarga Fragmentada", descripcion: "Inflige 4 de daño dividido"},
+      { dado: 2, nombre: "Primera postura: Descarga Fragmentada", descripcion: "Inflige 5 de daño"},
       { dado: 5, nombre: "Segunda postura: Castigo Eléctrico", descripcion: "Inflige 3 de daño a todos los enemigos en combate" },
-      { dado: 8, nombre: "Tercera postura: Supresión del trueno", descripcion: "Inflige 5 de daño y todos los jugadores cazadores pierden 1 action point la proxima ronda" },
-      { dado: 10, nombre: "Cuarta postura: Corte Corrupto", descripcion: "Inflige 10 de daño al tanque y a un enemigo en combate"},
+      { dado: 8, nombre: "Tercera postura: Supresión del trueno", descripcion: "Inflige 6 de daño y todos los jugadores cazadores pierden 1 action point la proxima ronda" },
+      { dado: 10, nombre: "Cuarta postura: Corte Corrupto", descripcion: "Inflige 10 de daño a todos los tanques en combate"},
       { dado: 12, nombre: "Quinta postura: Dominio del rayo", descripcion: "Inflige 10 de daño a TODOS los enemigos en el juego"}
     ]
   },
@@ -250,13 +246,13 @@ export const personajes = [
     type: "Lower",
     imagen: require("../assets/characters/enmu.jpg"),
     vidaMax: 30,
-    pasiva: "Cada ronda le hace 2 de daño a un enemigo que no esté en combate, y se cura 1 por cada enemigo dormido",
+    pasiva: "Cada ronda le hace 2 de daño a un enemigo que no esté en combate",
     habilidades: [
-      { dado: 2, nombre: "Susurro del Sueño Turbio", descripcion: "Los cazadores en este combate tienen -1 en sus dados la siguiente ronda" },
-      { dado: 5, nombre: "Pesadilla de Ensueño", descripcion: "Inflige 4 de daño, 8 a enemigos dormidos, tiene +1 en su siguiente tirada" },
+      { dado: 2, nombre: "Susurro del Sueño Turbio", descripcion: "Pasiva: Los cazadores en este combate tienen -1 en sus dados" },
+      { dado: 5, nombre: "Pesadilla de Ensueño", descripcion: "Inflige 4 de daño, se cura 4 y tiene +1 en su siguiente tirada" },
       { dado: 8, nombre: "Arte Demoníaco: Inducción al Sueño Profundo", descripcion: "Inflige 3 de daño y duerme a cualquier un enemigo en combate (solo puede despertar cuando es golpeado)" },
       { dado: 10, nombre: "Sueño del Tren Infinito", descripcion: "Duerme a todos los enemigos que no estén en combate (los cazadores deben gastar un action point para despertarlos) (Permanente)."},
-      { dado: 12, nombre: "Pesadilla Colectiva", descripcion: "Inflige 10 de daño a todos los enemigos dormidos"}
+      { dado: 12, nombre: "Pesadilla Colectiva", descripcion: "Duerme a todos los enemigos en el juego y tienen -2 en su siguiente tirada"}
     ]
   },
   {
@@ -270,9 +266,9 @@ export const personajes = [
     habilidades: [
       { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Cura 4 a Gyutaro" },
       { dado: 5, nombre: "Obi de carne", descripcion: "Inflige 6 de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Inflige 7 de daño a su enemigo y al de Gyutaro" },
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Inflige 8 de daño a todos los enemigos"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Gyutaro tiene +5 de daño"}
+      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Inflige 6 de daño a su enemigo y al de Gyutaro" },
+      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Inflige 7 de daño a todos los enemigos en el combate de Daki y Gyutaro"},
+      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Gyutaro tiene +5 de daño (Permanente, no acumulable)"}
     ]
   },
   {
@@ -475,7 +471,7 @@ export const personajes = [
       { dado: 2, nombre: "Destilación", descripcion: "Aumenta 1 el daño del veneno" },
       { dado: 5, nombre: "Estocada Médica", descripcion: "Inflige 4 de daño y se cura 5 de vida" },
       { dado: 8, nombre: "Antidoto del Pilar del Insecto", descripcion: "Quita todos los efectos negativos y cura 5 de vida al equipo"},
-      { dado: 10, nombre: "Regeneración Mariposa", descripcion: "Pasiva: Cura al equipo el daño de envenenamiento cada ronda"},
+      { dado: 10, nombre: "Regeneración Mariposa", descripcion: "Inflige 3 de daño por cada punto de envenenamiento del enemigo, envenena con 3 de daño al enemigo"},
       { dado: 12, nombre: "Danza del insecto", descripcion: "Inflige 12 de daño y el enemigo no se puede curar (Permanente)"}
     ]
   },
@@ -492,7 +488,7 @@ export const personajes = [
       { dado: 5, nombre: "Segunda Postura: Calma", descripcion: "Destruye su pasiva e inflige 25 de daño (solo se puede usar una vez)" },
       { dado: 8, nombre: "Tercera Postura: Flujo Incesante", descripcion: "Cura al equipo 5 de daño e inflige 5 de daño por aliado en combate"},
       { dado: 10, nombre: "Cuarta Postura: Muro de corriente Protectora", descripcion: "Inflige 14 de daño y pone un escudo al tanque de 5 de vida"},
-      { dado: 12, nombre: "Quinta Postura: Marea", descripcion: "Inflige 8 de daño por cada cazador muerto"}
+      { dado: 12, nombre: "Quinta Postura: Marea", descripcion: "Inflige 8 de daño por cada cazador muerto (Cuesta -1 por aliado en combate)"}
     ]
   },
   {
@@ -633,10 +629,10 @@ export const personajes = [
     pasiva: "Tienen dos habilidades, puedes activar la que quieras",
     habilidades: [
       { dado: 2, nombre: "Tratamiento Dual", descripcion: "Cura 3 / Un aliado tiene +1 en su proxima tirada" },
-      { dado: 5, nombre: "Barrera y Debilitación", descripcion: "Da 4 de escudo a un aliado en combate / El enemigo tiene -1 la proxima ronda" },
+      { dado: 5, nombre: "Barrera y Debilitación", descripcion: "Da 4 de escudo a un aliado en combate / El enemigo tiene -1 en dados la proxima ronda" },
       { dado: 8, nombre: "Terapia y toxinas", descripcion: " Cura a dos alidos 4 de vida / Envenena al enemigo por 1 de vida"},
       { dado: 10, nombre: "Apoyo Estratégico", descripcion: "Tiras 3 dados puedes escoger si curar o atacar con cada dado"},
-      { dado: 12, nombre: "Sello Médico de Supresión Demoníaca", descripcion: "Pasiva: El demonio hace 6 menos de daño"}
+      { dado: 12, nombre: "Sello Médico de Supresión Demoníaca", descripcion: "Pasiva: No necesitan tirar los dados para avanzar por el mapa, pueden teletransportarse (Permanente)"}
     ]
   },
   {
@@ -662,12 +658,12 @@ export const personajes = [
     type: "Support",
     imagen: require("../assets/characters/esposas.jpg"),
     vidaMax: 22,
-    pasiva: "Cada ronda, si un aliado en combate tiene menos de 10 de vida, cúralo 2",
+    pasiva: "Cada ronda, si un aliado en combate tiene menos de 12 de vida, cúralo 2",
     habilidades: [
       { dado: 2, nombre: "Cuidado de las Kunoichi", descripcion: "Cura 2 de vida a todos los aliados en combate" },
       { dado: 5, nombre: "Asistencia del Trío del Sonido", descripcion: "Inflige 2 de daño, cura 2 a un aliado y tienes +1 en tu siguiente tirada" },
-      { dado: 8, nombre: "Señal de Rescate", descripcion: "Pasiva: Si ellas destapan o son jaladas por un demonio, pueden pedir ayuda al aliado mas cercano, lo traen a combate y curan 5 (Permanente) "},
-      { dado: 10, nombre: "Escuadrón de Emergencia", descripcion: "Cura 10 al tanque"},
+      { dado: 8, nombre: "Señal de Rescate", descripcion: "Pasiva: Si están solas en combate, pueden pedir ayuda al aliado cercano (Permanente)"},
+      { dado: 10, nombre: "Escuadrón de Emergencia", descripcion: "Cura 12 al tanque"},
       { dado: 12, nombre: "Refuerzo del Distrito Rojo", descripcion: "Invoca a un cazador que no este en juego con 10 de vida (para este combate)"}
     ]
   },
@@ -699,7 +695,7 @@ export const personajes = [
       { dado: 2, nombre: "Corte del Cazador Común", descripcion: "Inflige 2 de daño" },
       { dado: 5, nombre: "Estocada Persistente", descripcion: "Inflige 4 de daño" },
       { dado: 8, nombre: "Ataque de Espada", descripcion: "Inlfige 6 de daño"},
-      { dado: 10, nombre: "Ráfaga Desesperada", descripcion: "Hace (2 dados) de daño"},
+      { dado: 10, nombre: "Ráfaga Desesperada", descripcion: "Inflige (2 dados) de daño"},
       { dado: 12, nombre: "Golpe Heroico", descripcion: "Inflige 12 de daño"}
     ]
   },
