@@ -60,11 +60,11 @@ export const personajes = [
     vidaMax: 100,
     pasiva: "Inflige daño igual a la tirada en los dados. El resto de demonios tiene +1 en sus dados",
     habilidades: [
-      { dado: 2, nombre: "Fuerza demoniaca", descripcion: "Inflige 8 de daño, se cura 5"},
-      { dado: 5, nombre: "Danza del desmembramiento", descripcion: "Inflige 10 de daño a todos los enemigos en combate"},
+      { dado: 2, nombre: "Fuerza demoniaca", descripcion: "Inflige 10 de daño, se cura 5"},
+      { dado: 5, nombre: "Danza del desmembramiento", descripcion: "Inflige 11 de daño a todos los enemigos en combate"},
       { dado: 8, nombre: "Sangre del rey Carmesí", descripcion: "Se cura 30 de vida (max. 2 veces)"},
-      { dado: 10, nombre: "Tormenta de carne ", descripcion: "Inflige 15 de daño y desbloquea a un demonio (max. 2 veces)"},
-      { dado: 12, nombre: "Sangre oscura, raíces espinozas", descripcion: "Mata al tanque e inflinge 15 de daño a todos los enemigos en combate. Desbloquea a todos los demonios faltantes" }
+      { dado: 10, nombre: "Tormenta de carne ", descripcion: "Inflige 10 de daño y desbloquea a un demonio (max. 2 veces)"},
+      { dado: 12, nombre: "Sangre oscura, raíces espinozas", descripcion: "Mata al tanque e inflige 5 de daño a todos los enemigos en combate" }
     ],
   },
   {
@@ -130,7 +130,7 @@ export const personajes = [
     vidaActual: 1,
 
     pasiva:
-      "Al recibir daño, crea un nuevo demonio en otra casilla. No puede morir hasta que todos su demonios hayan sido derrotados, inflige 1 de daño cada ronda",
+      "Cada ronda, crea un demonio en otra casilla (si hay disponibles). No puede morir hasta que todos su demonios hayan sido derrotados, inflige 1 de daño cada ronda",
 
     demonios: [
       {
