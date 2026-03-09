@@ -22,15 +22,12 @@ export default function TeamScreen({ equipo, setEquipo, navigation }) {
           style: "destructive",
           onPress: async () => {
             try {
-              // 🔥 BORRAR EFECTOS DE CADA PERSONAJE
               for (let personaje of equipo) {
                 await AsyncStorage.removeItem(`efectos_${personaje.id}`);
               }
 
-              // 🔥 BORRAR EQUIPO
               await AsyncStorage.removeItem("equipo");
 
-              // 🔥 LIMPIAR ESTADO
               setEquipo([]);
 
             } catch (error) {

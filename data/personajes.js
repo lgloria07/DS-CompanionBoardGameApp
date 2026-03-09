@@ -60,8 +60,8 @@ export const personajes = [
     vidaMax: 100,
     pasiva: "Inflige daño igual a la tirada en los dados. El resto de demonios tiene +1 en sus dados",
     habilidades: [
-      { dado: 2, nombre: "Fuerza demoniaca", descripcion: "Inflige 10 de daño, se cura 5"},
-      { dado: 5, nombre: "Danza del desmembramiento", descripcion: "Inflige 11 de daño a todos los enemigos en combate"},
+      { dado: 2, nombre: "Fuerza demoniaca", descripcion: "Inflige 8 de daño, se cura 8"},
+      { dado: 5, nombre: "Danza del desmembramiento", descripcion: "Inflige 12 de daño a todos los enemigos en combate"},
       { dado: 8, nombre: "Sangre del rey Carmesí", descripcion: "Se cura 30 de vida (max. 2 veces)"},
       { dado: 10, nombre: "Tormenta de carne ", descripcion: "Inflige 10 de daño y desbloquea a un demonio (max. 2 veces)"},
       { dado: 12, nombre: "Sangre oscura, raíces espinozas", descripcion: "Mata al tanque e inflige 5 de daño a todos los enemigos en combate" }
@@ -73,7 +73,7 @@ export const personajes = [
     nombre: "Kokushibo",
     type: "Upper",
     imagen: require("../assets/characters/kokoshibo.jpg"),
-    vidaMax: 55,
+    vidaMax: 66,
     pasiva: "Primero tiras y luego eliges que usar",
     habilidades: [
       { dado: 2, nombre: "Corte de las mil lunas", descripcion: "Inflige 8 de daño" },
@@ -89,7 +89,7 @@ export const personajes = [
     nombre: "Doma",
     type: "Upper",
     imagen: require("../assets/characters/doma.jpeg"),
-    vidaMax: 45,
+    vidaMax: 48,
     pasiva: "En combate los enemigos no pueden usar sus primeros dos poderes",
     habilidades: [
       { dado: 2, nombre: "Lluvia filosa", descripcion: "Inflige 4 de daño a todos los enemigos en combate" },
@@ -105,7 +105,7 @@ export const personajes = [
     nombre: "Akaza",
     type: "Upper",
     imagen: require("../assets/characters/akaza.jpg"),
-    vidaMax: 50,
+    vidaMax: 52,
     pasiva: "Al recibir daño obitiene +1 de daño permanente (max 5). Al llegar a +5 de daño, obtiene +1 en sus dados. Solo puede morir con el poder más debil del enemigo",
     habilidades: [
       { dado: 2, nombre: "Corte sagrado demoniaco", descripcion: "Inflige 7 de daño y tiene +1 en su siguiente ataque" },
@@ -130,7 +130,7 @@ export const personajes = [
     vidaActual: 1,
 
     pasiva:
-      "Cada ronda, crea un demonio en otra casilla (si hay disponibles). No puede morir hasta que todos su demonios hayan sido derrotados, inflige 1 de daño cada ronda",
+      "Cada ronda, crea un demonio en otra casilla (si hay disponibles). No puede morir hasta que todos su demonios hayan sido derrotados, inflige 2 de daño cada ronda",
 
     demonios: [
       {
@@ -181,7 +181,7 @@ export const personajes = [
     nombre: "Gyokko",
     type: "Upper",
     imagen: require("../assets/characters/gyokko.jpg"),
-    vidaMax: 45,
+    vidaMax: 48,
     pasiva: "Puede moverse entre casillas de demonio desocupadas",
     habilidades: [
       { dado: 2, nombre: "Escamas mortales", descripcion: "Inflige 5 de daño, se cura 2, y tiene +1 en su proxima tirada" },
@@ -197,7 +197,7 @@ export const personajes = [
     nombre: "Gyutaro",
     type: "Upper",
     imagen: require("../assets/characters/gyutaro.jpg"),
-    vidaMax: 40,
+    vidaMax: 42,
     pasiva: "Invoca a Daki en una casilla desocupada (si no hay, elimina un demonio). Solo puede morir hasta que Daki muera",
     habilidades: [
       { dado: 2, nombre: "Pacto de hermanos I", descripcion: "Cambia de lugar con su hermana" },
@@ -213,7 +213,7 @@ export const personajes = [
     nombre: "Nakime",
     type: "Upper",
     imagen: require("../assets/characters/nakime.jpg"),
-    vidaMax: 32,
+    vidaMax: 35,
     pasiva: "Cada ronda puede mover a un enemigo que no esté en combate a cualquier casilla del mapa (no de combate).",
     habilidades: [
       { dado: 2, nombre: "Resonancia del Biwa Cortante", descripcion: "Inflige 2 de daño, su proxima tirada tiene +1 en el dado (se acumula)" },
@@ -229,7 +229,7 @@ export const personajes = [
     nombre: "Kaigaku",
     type: "Upper",
     imagen: require("../assets/characters/kaigaku.webp"),
-    vidaMax: 30,
+    vidaMax: 35,
     pasiva: "Cuando un cazador llega a su casilla, automaticamente le va al jugador cazador (el resto de action points se pierden)",
     habilidades: [
       { dado: 2, nombre: "Primera postura: Descarga Fragmentada", descripcion: "Inflige 5 de daño"},
@@ -246,13 +246,13 @@ export const personajes = [
     type: "Lower",
     imagen: require("../assets/characters/enmu.jpg"),
     vidaMax: 30,
-    pasiva: "Cada ronda le hace 2 de daño a un enemigo que no esté en combate",
+    pasiva: "Cada ronda le hace 3 de daño a un enemigo que no esté en combate",
     habilidades: [
       { dado: 2, nombre: "Susurro del Sueño Turbio", descripcion: "Pasiva: Los cazadores en este combate tienen -1 en sus dados" },
-      { dado: 5, nombre: "Pesadilla de Ensueño", descripcion: "Inflige 4 de daño, se cura 4 y tiene +1 en su siguiente tirada" },
-      { dado: 8, nombre: "Arte Demoníaco: Inducción al Sueño Profundo", descripcion: "Inflige 3 de daño y duerme a cualquier un enemigo en combate (solo puede despertar cuando es golpeado)" },
+      { dado: 5, nombre: "Pesadilla de Ensueño", descripcion: "Inflige 5 de daño, se cura 4 y tiene +1 en su siguiente tirada" },
+      { dado: 8, nombre: "Arte Demoníaco: Inducción al Sueño Profundo", descripcion: "Inflige 4 de daño y duerme a cualquier un enemigo en combate (solo puede despertar cuando es golpeado)" },
       { dado: 10, nombre: "Sueño del Tren Infinito", descripcion: "Duerme a todos los enemigos que no estén en combate (los cazadores deben gastar un action point para despertarlos) (Permanente)."},
-      { dado: 12, nombre: "Pesadilla Colectiva", descripcion: "Duerme a todos los enemigos en el juego y tienen -2 en su siguiente tirada"}
+      { dado: 12, nombre: "Pesadilla Colectiva", descripcion: "Duerme profundamente a un enemigo en el juego, despierta hasta sacar dados pares"}
     ]
   },
   {
@@ -265,9 +265,9 @@ export const personajes = [
     pasiva: "Invoca a Gyutaro en una casilla desocupada (si no hay, elimina un demonio).",
     habilidades: [
       { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Cura 4 a Gyutaro" },
-      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige 6 de daño" },
-      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Inflige 6 de daño a su enemigo y al de Gyutaro" },
-      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Inflige 7 de daño a todos los enemigos en el combate de Daki y Gyutaro"},
+      { dado: 5, nombre: "Obi de carne", descripcion: "Inflige 7 de daño" },
+      { dado: 8, nombre: "Pacto de hermanos IV", descripcion: "Inflige 7 de daño a su enemigo y al de Gyutaro" },
+      { dado: 10, nombre: "Corte de 8 listones de Obi", descripcion: "Inflige 8 de daño a todos los enemigos en el combate de Daki y Gyutaro"},
       { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Pasiva: Gyutaro tiene +5 de daño (Permanente, no acumulable)"}
     ]
   },
@@ -280,10 +280,10 @@ export const personajes = [
     vidaMax: 30,
     pasiva: "Tiene 5 telarañas por cada otra araña en combate. Por cada telaraña los enemigos reciben 1 de daño cuando lo atacan",
     habilidades: [
-      { dado: 2, nombre: "Falsa Familia", descripcion: "Inflige 5 de daño" },
-      { dado: 5, nombre: "Tejido Vinculante", descripcion: "Inflige 4 de daño, se cura 2 y coloca una telaraña" },
+      { dado: 2, nombre: "Falsa Familia", descripcion: "Inflige 6 de daño" },
+      { dado: 5, nombre: "Tejido Vinculante", descripcion: "Inflige 5 de daño, se cura 2 y coloca una telaraña" },
       { dado: 8, nombre: "Red de Dominio", descripcion: "Coloca 3 telarañas" },
-      { dado: 10, nombre: "Tejido Vinculante II", descripcion: "Inflige 6 de daño, se cura 6 y pone 2 telarañas"},
+      { dado: 10, nombre: "Tejido Vinculante II", descripcion: "Inflige 7 de daño, se cura 6 y pone 2 telarañas"},
       { dado: 12, nombre: "Telaraña de Sangre", descripcion: "Inflige 2 de daño por telaraña a todos los enemigos en combate contra arañas (una vez que tengas 10 telarañas, esta habilidad cuesta 2 menos)"}
     ],
     efectoEspecial: {
@@ -300,11 +300,11 @@ export const personajes = [
     vidaMax: 26,
     pasiva: "Si saca exactamente el numero de dados que necesita para activar su habilidad, la repite 1 vez",
     habilidades: [
-      { dado: 2, nombre: "Lanzamiento Tempestuoso", descripcion: "Inflige 3 de daño" },
+      { dado: 2, nombre: "Lanzamiento Tempestuoso", descripcion: "Inflige 4 de daño" },
       { dado: 5, nombre: "Victoria Repetida", descripcion: "Pasiva: Si mata a un enemigo, repite la habilidad que lo mató" },
-      { dado: 8, nombre: "Rebote Despiadado", descripcion: "Lanza una pelota que rebota en los enemigos (primero el tanque): 4,3,2,1" },
-      { dado: 10, nombre: "Temari Demoniaco", descripcion: "Inflige (3 dados - 1) de daño"},
-      { dado: 12, nombre: "Impacto brutal", descripcion: "Inflige 10 de daño"}
+      { dado: 8, nombre: "Rebote Despiadado", descripcion: "Lanza una pelota que rebota en los enemigos (primero el tanque): 7,4,2,1" },
+      { dado: 10, nombre: "Temari Demoniaco", descripcion: "Inflige (3 dados) de daño"},
+      { dado: 12, nombre: "Impacto brutal", descripcion: "Inflige 11 de daño"}
     ]
   },
   {
@@ -316,11 +316,11 @@ export const personajes = [
     vidaMax: 26,
     pasiva: "El 3 tambien vale 6 para el",
     habilidades: [
-      { dado: 2, nombre: "Vector Gemelo", descripcion: "Inflige 2 de daño a el tanque y otro enemigo" },
-      { dado: 5, nombre: "Impulso Direccional", descripcion: "Inflige 7 de daño" },
-      { dado: 8, nombre: "Eje maldito", descripcion: "Pasiva: Si saca más de 10 en los dados, inflige 7 de daño" },
-      { dado: 10, nombre: "Trayectorias Forzadas", descripcion: "Todos los enemigos en combate tiran un dado y reciben eso de daño"},
-      { dado: 12, nombre: "Distorsión del Destino", descripcion: "Pasiva: Los cazadores vuelven a tirar el dado una vez si les sale 4, 5 o 6"}
+      { dado: 2, nombre: "Vector Gemelo", descripcion: "Inflige 3 de daño a el tanque y otro enemigo" },
+      { dado: 5, nombre: "Impulso Direccional", descripcion: "Inflige 8 de daño" },
+      { dado: 8, nombre: "Eje maldito", descripcion: "Pasiva: Si saca más de 10 en los dados, inflige 8 de daño" },
+      { dado: 10, nombre: "Trayectorias Forzadas", descripcion: "Destruye escudos y todos los enemigos en combate tiran un dado y reciben eso de daño"},
+      { dado: 12, nombre: "Distorsión del Destino", descripcion: "Pasiva: Los cazadores vuelven a tirar el dado una vez si les sale 4,5 o 6, tu vuelves a tirar si te sale 1 y 2"}
     ]
   },
   {
@@ -332,11 +332,11 @@ export const personajes = [
     vidaMax: 35,
     pasiva: "Obtiene +7 de resistencia a ataques por cada otra araña en combate",
     habilidades: [
-      { dado: 2, nombre: "Golpe de patriarca", descripcion: "Inflige 3 de daño" },
+      { dado: 2, nombre: "Golpe de patriarca", descripcion: "Inflige 4 de daño" },
       { dado: 5, nombre: "Regeneración de seda", descripcion: "Se cura 7 de vida" },
-      { dado: 8, nombre: "Veneno de coraza viviente", descripcion: "El proximo enemigo en golpearlo se envenena por 2 de vida" },
-      { dado: 10, nombre: "Castigo del nido", descripcion: "Inflige 10 de daño en todas los combates de araña"},
-      { dado: 12, nombre: "Prisión de telaraña", descripcion: "Atrapa como tanque al enemigo que quieras (no puede moverse hasta morir) e infligele 12 de daño"}
+      { dado: 8, nombre: "Veneno de coraza viviente", descripcion: "El proximo enemigo en golpearlo se envenena por 3 de vida" },
+      { dado: 10, nombre: "Castigo del nido", descripcion: "Inflige 11 de daño en todas los combates de araña"},
+      { dado: 12, nombre: "Prisión de telaraña", descripcion: "Atrapa como tanque al enemigo que quieras (no puede moverse hasta morir) e infligele 13 de daño"}
     ]
   },
   {
@@ -349,10 +349,10 @@ export const personajes = [
     pasiva: "Tiene +2 en sus dados por cada otra araña.",
     habilidades: [
       { dado: 2, nombre: "Tejido de Refuerzo Arácnido", descripcion: "Tiene +1 en su proxima tirada (se acumula)",},
-      { dado: 5, nombre: "Picadura Tejedora", descripcion: "Inflige 5 de daño" },
-      { dado: 8, nombre: "Banquete de Seda", descripcion: "Inflige 8 de daño y se cura 4" },
-      { dado: 10, nombre: "Mandato de la Colmena Arácnida", descripcion: "Todas las arañas infligen 2 de daño a todos los enemigos en combate y obtienen +1 en su proxima tirada"},
-      { dado: 12, nombre: "Nido", descripcion: "Todos los enemigos en combate se atacan entre si con su primera habilidad de daño (hacia la derecha)"}
+      { dado: 5, nombre: "Picadura Tejedora", descripcion: "Inflige 6 de daño" },
+      { dado: 8, nombre: "Banquete de Seda", descripcion: "Inflige 9 de daño y se cura 4" },
+      { dado: 10, nombre: "Mandato de la Colmena Arácnida", descripcion: "Todas las arañas infligen 6 de daño a todos los enemigos en combate y obtienen +1 en su proxima tirada"},
+      { dado: 12, nombre: "Nido", descripcion: "Todos los enemigos en combate se atacan entre si con su segunda habilidad de daño (hacia la derecha)"}
     ]
   },
   {
@@ -364,11 +364,11 @@ export const personajes = [
     vidaMax: 27,
     pasiva: "Cada ronda se cura 2 o inflige 2",
     habilidades: [
-      { dado: 2, nombre: "Redoble de Garra Resonante", descripcion: "Inflige (1 dado) de daño" },
-      { dado: 5, nombre: "Golpe del Tambor Voraz", descripcion: "Inflige 5 de daño al personaje con mayor vida que no sea el tanque" },
+      { dado: 2, nombre: "Redoble de Garra Resonante", descripcion: "Inflige (1 dado + 1) de daño" },
+      { dado: 5, nombre: "Golpe del Tambor Voraz", descripcion: "Inflige 6 de daño al personaje con mayor vida que no sea el tanque" },
       { dado: 8, nombre: "Ritmo Restaurador", descripcion: "Curate (dados) de vida" },
-      { dado: 10, nombre: "Compás de Desplazamiento", descripcion: "Inflige 2 de daño a cualquier enemigo en combate y mandalo a otro combate"},
-      { dado: 12, nombre: "Sinfonía de la Mansión del Tambor", descripcion: "Cambia de combate a todos los enemigos en combate e infligeles 1 de daño (si fallas esta habilidad, cuesta 1 menos hacerla)"}
+      { dado: 10, nombre: "Compás de Desplazamiento", descripcion: "Inflige 5 de daño a cualquier enemigo en combate y mandalo a otro combate"},
+      { dado: 12, nombre: "Sinfonía de la Mansión del Tambor", descripcion: "Cambia de combate a todos los enemigos en combate e infligeles 2 de daño (si fallas esta habilidad, cuesta 1 menos hacerla)"}
     ]
   },
   {
@@ -380,11 +380,11 @@ export const personajes = [
     vidaMax: 22,
     pasiva: "Tiene que haber al menos 2 cazadores para que pueda morir",
     habilidades: [
-      { dado: 2, nombre: "Zarpazo", descripcion: "Inflige 2 de daño" },
-      { dado: 5, nombre: "Fango", descripcion: "Inflige 4 de daño" },
+      { dado: 2, nombre: "Zarpazo", descripcion: "Inflige 3 de daño" },
+      { dado: 5, nombre: "Fango", descripcion: "Inflige 5 de daño" },
       { dado: 8, nombre: "Pantano", descripcion: "Inflige 12 de daño" },
       { dado: 10, nombre: "Maldición de las Profundidades", descripcion: "Pasiva: Aumenta en 1 el numero de cazadores que debe haber para morir (se puede acumular)"},
-      { dado: 12, nombre: "Lodazal Hambriento", descripcion: "Recupera 15 de vida e inflige 3 de daño a todos los enemigos en combate"}
+      { dado: 12, nombre: "Lodazal Hambriento", descripcion: "Recupera 16 de vida e inflige 4 de daño a todos los enemigos en combate"}
     ],
     efectoEspecial: {
       nombre: "Num. de cazadores",
@@ -397,14 +397,14 @@ export const personajes = [
     nombre: "Hand Demon",
     type: "Demon",
     imagen: require("../assets/characters/handdemon.jpg"),
-    vidaMax: 22,
+    vidaMax: 23,
     pasiva: "Inflige 2 más de daño a enemigos que no sean pilares",
     habilidades: [
-      { dado: 2, nombre: "Agarre", descripcion: "Inflige 3 de daño" },
-      { dado: 5, nombre: "Devorar", descripcion: "Inflige (dado) de daño" },
-      { dado: 8, nombre: "Manos malditas", descripcion: "Pasiva: Si el enemigo saca menos de 6 en el dado, inflige 3 de daño" },
+      { dado: 2, nombre: "Agarre", descripcion: "Inflige 4 de daño" },
+      { dado: 5, nombre: "Devorar", descripcion: "Inflige (dado + 1) de daño" },
+      { dado: 8, nombre: "Manos malditas", descripcion: "Pasiva: Si el enemigo saca menos de 6 en el dado, inflige 5 de daño" },
       { dado: 10, nombre: "Absorción", descripcion: "Cúrate 4 de vida e inflige (dados) de daño"},
-      { dado: 12, nombre: "Golpe largo", descripcion: "Inflige 12 de daño a cualquier enemigo en combate"}
+      { dado: 12, nombre: "Golpe largo", descripcion: "Inflige 13 de daño a cualquier enemigo en combate"}
     ]
   },
   {
@@ -416,11 +416,11 @@ export const personajes = [
     vidaMax: 15,
     pasiva: "Obtiene +10 de daño si muzan está en combate",
     habilidades: [
-      { dado: 2, nombre: "Golpe", descripcion: "Inflige 2 de daño" },
-      { dado: 5, nombre: "Golpe II", descripcion: "Inflige 4 de daño" },
-      { dado: 8, nombre: "Golpe III", descripcion: "Inflige 6 de daño" },
-      { dado: 10, nombre: "Golpe IV", descripcion: "Inflige 8 de daño"},
-      { dado: 12, nombre: "Golpe V", descripcion: "Inflige 12 de daño"}
+      { dado: 2, nombre: "Golpe", descripcion: "Inflige 3 de daño" },
+      { dado: 5, nombre: "Golpe II", descripcion: "Inflige 5 de daño" },
+      { dado: 8, nombre: "Golpe III", descripcion: "Inflige 7 de daño" },
+      { dado: 10, nombre: "Golpe IV", descripcion: "Inflige 9 de daño"},
+      { dado: 12, nombre: "Golpe V", descripcion: "Inflige 13 de daño"}
     ]
   },
   {
@@ -429,8 +429,8 @@ export const personajes = [
     nombre: "Muichiro Tokito",
     type: "Mage",
     imagen: require("../assets/characters/muichiro.webp"),
-    vidaMax: 30,
-    pasiva: "Cada ronda se cura la cantidad de pasivas que haya en juego (incluyendo esta y las de los enemigos)",
+    vidaMax: 32,
+    pasiva: "Cada ronda se cura o inflige de daño la cantidad de pasivas que haya en juego (incluyendo esta y las de los enemigos.)",
     habilidades: [
       { dado: 2, nombre: "Primera postura: Niebla Rasante", descripcion: "Pasiva: Si tokito falla su habilidad, no gasta action point usarlo (Permanente)" },
       { dado: 5, nombre: "Segunda postura: Bruma Envolvente ", descripcion: "Inflige (dados + pasivas totales en combate) de daño"},
@@ -485,10 +485,10 @@ export const personajes = [
     pasiva: "Tiene +10 de daño contra lunas",
     habilidades: [
       { dado: 2, nombre: "Primera Postura: Corte de la Superficie Serena", descripcion: "Inflige 6 de daño" },
-      { dado: 5, nombre: "Segunda Postura: Calma", descripcion: "Destruye su pasiva e inflige 25 de daño (solo se puede usar una vez)" },
-      { dado: 8, nombre: "Tercera Postura: Flujo Incesante", descripcion: "Cura al equipo 5 de daño e inflige 5 de daño por aliado en combate"},
+      { dado: 5, nombre: "Segunda Postura: Calma", descripcion: "Destruye su pasiva e inflige 25 de daño (solo se puede usar una vez)"},
+      { dado: 8, nombre: "Tercera Postura: Flujo Incesante", descripcion: "Inflige (dado * 4) de daño"},
       { dado: 10, nombre: "Cuarta Postura: Muro de corriente Protectora", descripcion: "Inflige 14 de daño y pone un escudo al tanque de 5 de vida"},
-      { dado: 12, nombre: "Quinta Postura: Marea", descripcion: "Inflige 8 de daño por cada cazador muerto (Cuesta -1 por aliado en combate)"}
+      { dado: 12, nombre: "Quinta Postura: Marea", descripcion: "Inflige (dados*4) de daño"}
     ]
   },
   {
@@ -503,8 +503,8 @@ export const personajes = [
       { dado: 2, nombre: "Corte de Agua Serena", descripcion: "Inflige 6 de daño" },
       { dado: 5, nombre: "Determinación", descripcion: "Inflige 8 de daño, cura 8 a un aliado o gana un escudo de 2 de vida" },
       { dado: 8, nombre: "Aprendizaje", descripcion: "Tanjiro puede aprender la cuarta habilidad de un aliado en combate (Permanente), puede volver a gastar un action point en cambiar por otra habilidad"},
-      { dado: 10, nombre: "Vínculo Inquebrantable", descripcion: "Invoca a un cazador de tu elección. El y Tanjiro activan su primera habilidad"},
-      { dado: 12, nombre: "Golpe Final", descripcion: "Inflige 15 de daño (si el enemigo tiene 15 o menos de vida, esta habilidad cuesta 3 menos)"}
+      { dado: 10, nombre: "Vínculo Inquebrantable", descripcion: "Invoca a un cazador de tu elección. El y Tanjiro activan su segunda habilidad"},
+      { dado: 12, nombre: "Golpe Final", descripcion: "Inflige 15 de daño (si el enemigo tiene 15 o menos de vida, esta habilidad cuesta 4 menos)"}
     ]
   },
   {

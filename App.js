@@ -7,12 +7,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { useState, useRef, useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
+
 import LoginScreen from "./screens/LoginScreen";
 import RulesScreen from "./screens/RulesScreen";
-
-
-
-
 import HantenguDetailScreen from './screens/HantenguDetailScreen';
 import SeleccionScreen from './screens/SelectionScreen';
 import TeamScreen from './screens/TeamScreen';
