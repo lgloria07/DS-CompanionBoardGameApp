@@ -9,22 +9,26 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function LoginScreen({ setIsLoggedIn }) {
-  const [username, setUsername] = useState("");
+export default function LoginScreen({ setIsLoggedIn, setUsername }) {
+  const [usernameInput, setUsernameInput] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    if (!username || !password) {
+    if (!usernameInput || !password) {
       Alert.alert("Error", "Ingresa usuario y contraseña");
       return;
     }
 
     const userData = {
-      username,
+      username: usernameInput,
       password
     };
 
+    // Guardar en AsyncStorage
     await AsyncStorage.setItem("user", JSON.stringify(userData));
+
+    // Actualizar el estado global en App.js
+    setUsername(usernameInput);
     setIsLoggedIn(true);
   };
 
@@ -35,8 +39,8 @@ export default function LoginScreen({ setIsLoggedIn }) {
       <TextInput
         placeholder="Usuario"
         style={styles.input}
-        value={username}
-        onChangeText={setUsername}
+        value={usernameInput}
+        onChangeText={setUsernameInput}
       />
 
       <TextInput

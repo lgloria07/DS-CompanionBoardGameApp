@@ -11,7 +11,9 @@ import {
   TextInput,
 } from "react-native";
 
-export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
+import { db } from "../firebaseConfig";
+import { ref, set } from "firebase/database";
+export default function CharacterDetailScreen({ route, equipo, setEquipo, username }) {
 
   const { personaje } = route.params;
 
@@ -83,35 +85,38 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo }) {
         VIDA
   ========================= */
 
-  const aplicarCambio = () => {
-    const numero = parseInt(cantidad);
+  const aplicarCambio = async () => {
 
-    if (isNaN(numero) || numero <= 0) return;
+  const numero = parseInt(cantidad);
 
-    let nuevaVida =
-      modo === "sumar"
-        ? vidaActual + numero
-        : vidaActual - numero;
+  if (isNaN(numero) || numero <= 0) return;
 
-    if (nuevaVida > personaje.vidaMax)
-      nuevaVida = personaje.vidaMax;
+  let nuevaVida =
+    modo === "sumar"
+      ? vidaActual + numero
+      : vidaActual - numero;
 
-    if (nuevaVida < 0)
-      nuevaVida = 0;
+  if (nuevaVida > personaje.vidaMax)
+    nuevaVida = personaje.vidaMax;
 
-    setVidaActual(nuevaVida);
+  if (nuevaVida < 0)
+    nuevaVida = 0;
 
-    const equipoActualizado = equipo.map((p) =>
-      p.id === personaje.id
-        ? { ...p, vidaActual: nuevaVida }
-        : p
-    );
+  setVidaActual(nuevaVida);
 
-    setEquipo(equipoActualizado);
+  const equipoActualizado = equipo.map((p) =>
+    p.id === personaje.id
+      ? { ...p, vidaActual: nuevaVida }
+      : p
+  );
 
-    setCantidad("");
-    setModo(null);
-  };
+  setEquipo(equipoActualizado);
+
+  await set(ref(db, "equipos/" + username), equipoActualizado);
+
+  setCantidad("");
+  setModo(null);
+};
 
   const coloresHabilidades = [
     "#A3A692",

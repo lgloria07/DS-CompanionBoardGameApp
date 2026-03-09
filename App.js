@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, Animated } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, Animated, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,8 +7,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { useState, useRef, useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-
 
 import LoginScreen from "./screens/LoginScreen";
 import RulesScreen from "./screens/RulesScreen";
@@ -91,35 +89,68 @@ function HomeScreen({ navigation }) {
 }
 
 
-
-
 /* =========================
    TABS
 ========================= */
-function TabsScreen({ equipo, setEquipo, route }) {
+
+function TabsScreen({ equipo, setEquipo, username, route, setIsLoggedIn }) {
+
   const { category } = route.params;
+
+  const cerrarSesion = async () => {
+
+    Alert.alert(
+      "Cerrar sesión",
+      "¿Seguro que quieres salir?",
+      [
+        { text: "Cancelar", style: "cancel" },
+        {
+          text: "Salir",
+          style: "destructive",
+          onPress: async () => {
+
+            await AsyncStorage.removeItem("user");
+            await AsyncStorage.removeItem("equipo");
+
+            setEquipo([]);
+            setIsLoggedIn(false);
+
+          },
+        },
+      ]
+    );
+
+  };
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+
         tabBarIcon: ({ color, size }) => {
+
           let iconName;
 
           if (route.name === "Seleccion") {
             iconName = "people";
-        } else if (route.name === "Team") {
+          } else if (route.name === "Team") {
             iconName = "shield";
-        } else if (route.name === "Rules") {
+          } else if (route.name === "Rules") {
             iconName = "book";
-        }
-
+          } else if (route.name === "Logout") {
+            iconName = "exit";
+          }
 
           return <Ionicons name={iconName} size={size} color={color} />;
+
         },
+
         tabBarActiveTintColor: "#4CAF50",
         tabBarInactiveTintColor: "gray",
         headerShown: false
+
       })}
     >
+
       <Tab.Screen name="Seleccion">
         {(props) => (
           <SeleccionScreen
@@ -127,6 +158,7 @@ function TabsScreen({ equipo, setEquipo, route }) {
             equipo={equipo}
             setEquipo={setEquipo}
             category={category}
+            username={username}
           />
         )}
       </Tab.Screen>
@@ -137,36 +169,65 @@ function TabsScreen({ equipo, setEquipo, route }) {
             {...props}
             equipo={equipo}
             setEquipo={setEquipo}
+            username={username}
           />
         )}
       </Tab.Screen>
+
       <Tab.Screen
         name="Rules"
         component={RulesScreen}
         options={{ title: "Reglas" }}
       />
 
+      {/* 🔹 Logout */}
+      <Tab.Screen name="Logout">
+        {() => (
+          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#B71C1C",
+                padding: 15,
+                borderRadius: 10,
+              }}
+              onPress={cerrarSesion}
+            >
+              <Text style={{ color: "white", fontWeight: "bold" }}>
+                Cerrar sesión
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </Tab.Screen>
+
     </Tab.Navigator>
   );
 }
 
+
 /* =========================
    APP
 ========================= */
+
 export default function App() {
+
   const [equipo, setEquipo] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     checkLogin();
   }, []);
 
   const checkLogin = async () => {
+
     const user = await AsyncStorage.getItem("user");
     const savedTeam = await AsyncStorage.getItem("equipo");
 
     if (user) {
+      const parsed = JSON.parse(user);
+      setUsername(parsed.username);
       setIsLoggedIn(true);
     }
 
@@ -175,6 +236,7 @@ export default function App() {
     }
 
     setLoading(false);
+
   };
 
   useEffect(() => {
@@ -186,7 +248,7 @@ export default function App() {
   if (loading) return null;
 
   if (!isLoggedIn) {
-    return <LoginScreen setIsLoggedIn={setIsLoggedIn} />;
+    return <LoginScreen setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />;
   }
 
   return (
@@ -208,6 +270,8 @@ export default function App() {
               {...props}
               equipo={equipo}
               setEquipo={setEquipo}
+              username={username}
+              setIsLoggedIn={setIsLoggedIn}
             />
           )}
         </Stack.Screen>
@@ -221,6 +285,7 @@ export default function App() {
               {...props}
               equipo={equipo}
               setEquipo={setEquipo}
+              username={username}
             />
           )}
         </Stack.Screen>
@@ -234,6 +299,7 @@ export default function App() {
               {...props}
               equipo={equipo}
               setEquipo={setEquipo}
+              username={username}
             />
           )}
         </Stack.Screen>

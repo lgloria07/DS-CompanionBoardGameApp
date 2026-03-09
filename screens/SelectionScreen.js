@@ -9,21 +9,39 @@ import {
   Alert,
 } from "react-native";
 import { personajes } from "../data/personajes";
+import { db } from "../firebaseConfig";
+import { ref, set } from "firebase/database";
 
 export default function SeleccionScreen({
   navigation,
   equipo,
   setEquipo,
   category,
+  username
 }) {
+
   const personajesFiltrados = personajes.filter(
     (p) => p.category === category
   );
 
+  const guardarEquipoFirebase = async (nuevoEquipo) => {
+
+    if (!username) return;
+
+    try {
+      await set(ref(db, "equipos/" + username), nuevoEquipo);
+    } catch (error) {
+      console.log("Error guardando equipo en Firebase", error);
+    }
+
+  };
+
   const agregarAlEquipo = (personaje) => {
+
     const yaExiste = equipo.find((p) => p.id === personaje.id);
 
     if (yaExiste) {
+
       Alert.alert(
         "Quitar personaje",
         `¿Seguro que quieres quitar a ${personaje.nombre}?`,
@@ -33,35 +51,52 @@ export default function SeleccionScreen({
             text: "Quitar",
             style: "destructive",
             onPress: () => {
-              setEquipo(equipo.filter((p) => p.id !== personaje.id));
+
+              const nuevoEquipo = equipo.filter(
+                (p) => p.id !== personaje.id
+              );
+
+              setEquipo(nuevoEquipo);
+              guardarEquipoFirebase(nuevoEquipo);
+
             },
           },
         ]
       );
+
     } else {
-      setEquipo([
+
+      const nuevoEquipo = [
         ...equipo,
-        { ...personaje, vidaActual: personaje.vidaMax },
-      ]);
+        { ...personaje, vidaActual: personaje.vidaMax }
+      ];
+
+      setEquipo(nuevoEquipo);
+      guardarEquipoFirebase(nuevoEquipo);
+
     }
+
   };
 
   const getCategoryColor = (type) => {
+
     switch (type) {
       case "Slayer":
-        return "#E53935"; // rojo
+        return "#E53935";
       case "Mage":
-        return "#8E24AA"; // morado
+        return "#8E24AA";
       case "Tank":
-        return "#1E88E5"; // azul
+        return "#1E88E5";
       case "Support":
-        return "#7d1e6b"; // azul
+        return "#7d1e6b";
       default:
-        return "#966316"; // verde
+        return "#966316";
     }
+
   };
 
   const renderItem = ({ item }) => {
+
     const yaAgregado = equipo.find((p) => p.id === item.id);
 
     return (
@@ -71,6 +106,7 @@ export default function SeleccionScreen({
           yaAgregado && styles.cardSeleccionada,
         ]}
       >
+
         <View
           style={[
             styles.badge,
@@ -81,7 +117,6 @@ export default function SeleccionScreen({
             {item.type}
           </Text>
         </View>
-
 
         <Image source={item.imagen} style={styles.image} />
 
@@ -100,12 +135,15 @@ export default function SeleccionScreen({
             {yaAgregado ? "✓ En equipo" : "+ Agregar"}
           </Text>
         </TouchableOpacity>
+
       </View>
     );
+
   };
 
   return (
     <View style={styles.container}>
+
       <Text style={styles.titulo}>
         Selección de personajes
       </Text>
@@ -118,10 +156,10 @@ export default function SeleccionScreen({
         contentContainerStyle={{ paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
       />
+
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     marginTop: 35,
