@@ -79,6 +79,15 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo, userna
 
   useEffect(() => {
     guardarEfectos(efectos);
+
+    const equipoActualizado = equipo.map((p) =>
+      p.id === personaje.id
+        ? { ...p, efectos }
+        : p
+    );
+
+    setEquipo(equipoActualizado);
+    set(ref(db, "equipos/" + username), equipoActualizado);
   }, [efectos]);
 
   /* =========================
@@ -106,7 +115,7 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo, userna
 
   const equipoActualizado = equipo.map((p) =>
     p.id === personaje.id
-      ? { ...p, vidaActual: nuevaVida }
+      ? { ...p, vidaActual: nuevaVida, efectos }
       : p
   );
 

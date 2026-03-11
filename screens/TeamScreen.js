@@ -117,7 +117,8 @@ export default function TeamScreen({ equipo, setEquipo, navigation, username }) 
           if (item.demonios) {
             navigation.navigate("HantenguDetail", { personaje: item });
           } else {
-            navigation.navigate("CharacterDetail", { personaje: item });
+            navigation.navigate("CharacterDetail", { personaje: item, owner: selectedUser });
+
           }
 
         }}
