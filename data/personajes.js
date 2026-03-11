@@ -262,7 +262,7 @@ export const personajes = [
     type: "Upper",
     imagen: require("../assets/characters/daki.jpg"),
     vidaMax: 25,
-    pasiva: "Invoca a Gyutaro en una casilla desocupada (si no hay, elimina un demonio).",
+    pasiva: "Daki no puede morir si Gyutaro tiene mas de 10 de vida.",
     habilidades: [
       { dado: 2, nombre: "Pacto de hermanos III", descripcion: "Cura 4 a Gyutaro" },
       { dado: 5, nombre: "Obi de carne", descripcion: "Inflige 7 de daño" },

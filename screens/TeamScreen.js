@@ -10,96 +10,136 @@ import {
 import { Picker } from "@react-native-picker/picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { db } from "../firebaseConfig";
-import { ref, get, remove } from "firebase/database";
+import { ref, get, remove, onValue, off } from "firebase/database";
 import { useState, useEffect } from "react";
 
 export default function TeamScreen({ equipo, setEquipo, navigation, username }) {
 
   const [selectedUser, setSelectedUser] = useState(username);
   const [otherTeam, setOtherTeam] = useState([]);
-  const [users, setUsers] = useState([username]); // lista de jugadores
+  const [users, setUsers] = useState([username]);
+
+  /* =========================
+      REINICIAR EQUIPO
+  ========================= */
 
   const reiniciarEquipo = () => {
-  Alert.alert(
-    "Reiniciar equipo",
-    "¿Estás seguro de que quieres borrar el equipo?",
-    [
-      { text: "Cancelar", style: "cancel" },
-      {
-        text: "Sí",
-        style: "destructive",
-        onPress: async () => {
-          try {
+    Alert.alert(
+      "Reiniciar equipo",
+      "¿Estás seguro de que quieres borrar el equipo?",
+      [
+        { text: "Cancelar", style: "cancel" },
+        {
+          text: "Sí",
+          style: "destructive",
+          onPress: async () => {
+            try {
 
-            for (let personaje of equipo) {
-              await AsyncStorage.removeItem(`efectos_${personaje.id}`);
+              for (let personaje of equipo) {
+                await AsyncStorage.removeItem(`efectos_${personaje.id}`);
+              }
+
+              await AsyncStorage.removeItem("equipo");
+
+              await remove(ref(db, "equipos/" + username));
+
+              setEquipo([]);
+
+              fetchUsers();
+
+            } catch (error) {
+              console.log("Error reiniciando equipo", error);
             }
-
-            await AsyncStorage.removeItem("equipo");
-
-            // 🔥 BORRAR EQUIPO EN FIREBASE
-            await remove(ref(db, "equipos/" + username));
-
-            setEquipo([]);
-
-            // actualizar lista de usuarios
-            fetchUsers();
-
-          } catch (error) {
-            console.log("Error reiniciando equipo", error);
-          }
+          },
         },
-      },
-    ]
-  );
-};
+      ]
+    );
+  };
 
-  // 🔹 Cargar lista de usuarios desde Firebase
+  /* =========================
+      CARGAR USUARIOS
+  ========================= */
+
   const fetchUsers = async () => {
-  const snapshot = await get(ref(db, "equipos"));
 
-  if (snapshot.exists()) {
-    const data = snapshot.val();
-    let lista = Object.keys(data);
-
-    // 👇 Asegurar que tu usuario siempre esté en la lista
-    if (!lista.includes(username)) {
-      lista.push(username);
-    }
-
-    setUsers(lista);
-  } else {
-    // 👇 Si no hay nada en Firebase, al menos mostrar tu usuario
-    setUsers([username]);
-  }
-};
-
-  // 🔹 Cargar equipo de otro usuario
-  const fetchTeam = async (user) => {
-
-    if (!user) return;
-
-    const snapshot = await get(ref(db, "equipos/" + user));
+    const snapshot = await get(ref(db, "equipos"));
 
     if (snapshot.exists()) {
-      setOtherTeam(snapshot.val());
+
+      const data = snapshot.val();
+      let lista = Object.keys(data);
+
+      if (!lista.includes(username)) {
+        lista.push(username);
+      }
+
+      setUsers(lista);
+
     } else {
-      setOtherTeam([]);
+
+      setUsers([username]);
+
     }
 
   };
+
+  /* =========================
+      ESCUCHAR EQUIPO EN TIEMPO REAL
+  ========================= */
+
+  const listenTeam = (user) => {
+
+    if (!user) return;
+
+    const teamRef = ref(db, "equipos/" + user);
+
+    onValue(teamRef, (snapshot) => {
+
+      if (snapshot.exists()) {
+        setOtherTeam(snapshot.val());
+      } else {
+        setOtherTeam([]);
+      }
+
+    });
+
+    return teamRef;
+
+  };
+
+  /* =========================
+      CARGAR USUARIOS AL ABRIR
+  ========================= */
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
+  /* =========================
+      ESCUCHAR CAMBIOS DEL EQUIPO
+  ========================= */
+
   useEffect(() => {
-  if (selectedUser === username) {
-    setOtherTeam([]); 
-  } else {
-    fetchTeam(selectedUser);
-  }
-}, [selectedUser]);
+
+    let teamRef;
+
+    if (selectedUser === username) {
+      setOtherTeam([]);
+    } else {
+      teamRef = listenTeam(selectedUser);
+    }
+
+    return () => {
+      if (teamRef) {
+        off(teamRef);
+      }
+    };
+
+  }, [selectedUser]);
+
+  /* =========================
+      RENDER PERSONAJE
+  ========================= */
 
   const renderItem = ({ item }) => {
 
@@ -115,9 +155,15 @@ export default function TeamScreen({ equipo, setEquipo, navigation, username }) 
         onPress={() => {
 
           if (item.demonios) {
+
             navigation.navigate("HantenguDetail", { personaje: item });
+
           } else {
-            navigation.navigate("CharacterDetail", { personaje: item, owner: selectedUser });
+
+            navigation.navigate("CharacterDetail", {
+              personaje: item,
+              owner: selectedUser
+            });
 
           }
 
@@ -162,12 +208,14 @@ export default function TeamScreen({ equipo, setEquipo, navigation, username }) 
 
       </TouchableOpacity>
     );
+
   };
 
   const equipoMostrado =
     selectedUser === username ? equipo : otherTeam;
 
   return (
+
     <View style={styles.container}>
 
       <Text style={styles.titulo}>
@@ -203,7 +251,9 @@ export default function TeamScreen({ equipo, setEquipo, navigation, username }) 
       />
 
     </View>
+
   );
+
 }
 
 const styles = StyleSheet.create({

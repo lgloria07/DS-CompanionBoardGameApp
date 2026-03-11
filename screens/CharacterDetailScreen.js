@@ -13,9 +13,11 @@ import {
 
 import { db } from "../firebaseConfig";
 import { ref, set } from "firebase/database";
+
 export default function CharacterDetailScreen({ route, equipo, setEquipo, username }) {
 
-  const { personaje } = route.params;
+  const { personaje, owner } = route.params;
+  const esPropietario = owner === username;
 
   const [vidaActual, setVidaActual] = useState(personaje.vidaActual);
   const [cantidad, setCantidad] = useState("");
@@ -65,17 +67,9 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo, userna
     }
   };
 
-  /* =========================
-        AL ABRIR PANTALLA
-  ========================= */
-
   useEffect(() => {
     cargarEfectos();
   }, []);
-
-  /* =========================
-        GUARDAR AUTOMÁTICO
-  ========================= */
 
   useEffect(() => {
     guardarEfectos(efectos);
@@ -88,6 +82,7 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo, userna
 
     setEquipo(equipoActualizado);
     set(ref(db, "equipos/" + username), equipoActualizado);
+
   }, [efectos]);
 
   /* =========================
@@ -96,36 +91,36 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo, userna
 
   const aplicarCambio = async () => {
 
-  const numero = parseInt(cantidad);
+    const numero = parseInt(cantidad);
 
-  if (isNaN(numero) || numero <= 0) return;
+    if (isNaN(numero) || numero <= 0) return;
 
-  let nuevaVida =
-    modo === "sumar"
-      ? vidaActual + numero
-      : vidaActual - numero;
+    let nuevaVida =
+      modo === "sumar"
+        ? vidaActual + numero
+        : vidaActual - numero;
 
-  if (nuevaVida > personaje.vidaMax)
-    nuevaVida = personaje.vidaMax;
+    if (nuevaVida > personaje.vidaMax)
+      nuevaVida = personaje.vidaMax;
 
-  if (nuevaVida < 0)
-    nuevaVida = 0;
+    if (nuevaVida < 0)
+      nuevaVida = 0;
 
-  setVidaActual(nuevaVida);
+    setVidaActual(nuevaVida);
 
-  const equipoActualizado = equipo.map((p) =>
-    p.id === personaje.id
-      ? { ...p, vidaActual: nuevaVida, efectos }
-      : p
-  );
+    const equipoActualizado = equipo.map((p) =>
+      p.id === personaje.id
+        ? { ...p, vidaActual: nuevaVida, efectos }
+        : p
+    );
 
-  setEquipo(equipoActualizado);
+    setEquipo(equipoActualizado);
 
-  await set(ref(db, "equipos/" + username), equipoActualizado);
+    await set(ref(db, "equipos/" + username), equipoActualizado);
 
-  setCantidad("");
-  setModo(null);
-};
+    setCantidad("");
+    setModo(null);
+  };
 
   const coloresHabilidades = [
     "#A3A692",
@@ -141,141 +136,183 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo, userna
       contentContainerStyle={{ paddingBottom: 60 }}
       showsVerticalScrollIndicator={false}
     >
+
       <View style={styles.card}>
 
         {/* TOP SECTION */}
         <View style={styles.topSection}>
           <Image source={personaje.imagen} style={styles.image} />
 
-          <View style={styles.efectosContainer}>
+          {/* EFECTOS */}
 
-            <Text style={styles.efectoLabel}>Ataque extra</Text>
-            <TextInput
-              style={styles.efectoInput}
-              keyboardType="numeric"
-              value={efectos.ataqueExtra}
-              onChangeText={(text) =>
-                setEfectos({ ...efectos, ataqueExtra: text })
-              }
-            />
+          {esPropietario ? (
 
-            <Text style={styles.efectoLabel}>Curación / ronda</Text>
-            <TextInput
-              style={styles.efectoInput}
-              keyboardType="numeric"
-              value={efectos.curacionRonda}
-              onChangeText={(text) =>
-                setEfectos({ ...efectos, curacionRonda: text })
-              }
-            />
+            <View style={styles.efectosContainer}>
 
-            <Text style={styles.efectoLabel}>Puntuación extra/reducida</Text>
-            <TextInput
-              style={styles.efectoInput}
-              keyboardType="numeric"
-              value={efectos.puntuacionExtra}
-              onChangeText={(text) =>
-                setEfectos({ ...efectos, puntuacionExtra: text })
-              }
-            />
+              <Text style={styles.efectoLabel}>Ataque extra</Text>
+              <TextInput
+                style={styles.efectoInput}
+                keyboardType="numeric"
+                value={efectos.ataqueExtra}
+                onChangeText={(text) =>
+                  setEfectos({ ...efectos, ataqueExtra: text })
+                }
+              />
 
-            <Text style={styles.efectoLabel}>Envenenamiento</Text>
-            <TextInput
-              style={styles.efectoInput}
-              keyboardType="numeric"
-              value={efectos.envenenamiento}
-              onChangeText={(text) =>
-                setEfectos({ ...efectos, envenenamiento: text })
-              }
-            />
+              <Text style={styles.efectoLabel}>Curación / ronda</Text>
+              <TextInput
+                style={styles.efectoInput}
+                keyboardType="numeric"
+                value={efectos.curacionRonda}
+                onChangeText={(text) =>
+                  setEfectos({ ...efectos, curacionRonda: text })
+                }
+              />
 
-            <Text style={styles.efectoLabel}>Escudo</Text>
-            <TextInput
-              style={styles.efectoInput}
-              keyboardType="numeric"
-              value={efectos.escudo}
-              onChangeText={(text) =>
-                setEfectos({ ...efectos, escudo: text })
-              }
-            />
+              <Text style={styles.efectoLabel}>Puntuación extra</Text>
+              <TextInput
+                style={styles.efectoInput}
+                keyboardType="numeric"
+                value={efectos.puntuacionExtra}
+                onChangeText={(text) =>
+                  setEfectos({ ...efectos, puntuacionExtra: text })
+                }
+              />
 
-            <Text style={styles.efectoLabel}>Resistencia</Text>
-            <TextInput
-              style={styles.efectoInput}
-              keyboardType="numeric"
-              value={efectos.resistencia}
-              onChangeText={(text) =>
-                setEfectos({ ...efectos, resistencia: text })
-              }
-            />
+              <Text style={styles.efectoLabel}>Envenenamiento</Text>
+              <TextInput
+                style={styles.efectoInput}
+                keyboardType="numeric"
+                value={efectos.envenenamiento}
+                onChangeText={(text) =>
+                  setEfectos({ ...efectos, envenenamiento: text })
+                }
+              />
 
-            {personaje.efectoEspecial && (
-              <>
-                <Text style={styles.efectoLabel}>
-                  {personaje.efectoEspecial.nombre}
+              <Text style={styles.efectoLabel}>Escudo</Text>
+              <TextInput
+                style={styles.efectoInput}
+                keyboardType="numeric"
+                value={efectos.escudo}
+                onChangeText={(text) =>
+                  setEfectos({ ...efectos, escudo: text })
+                }
+              />
+
+              <Text style={styles.efectoLabel}>Resistencia</Text>
+              <TextInput
+                style={styles.efectoInput}
+                keyboardType="numeric"
+                value={efectos.resistencia}
+                onChangeText={(text) =>
+                  setEfectos({ ...efectos, resistencia: text })
+                }
+              />
+
+              {/* EFECTO ESPECIAL */}
+
+              {personaje.efectoEspecial && (
+                <>
+                  <Text style={styles.efectoLabel}>
+                    {personaje.efectoEspecial.nombre}
+                  </Text>
+
+                  {personaje.efectoEspecial.tipo === "boolean" ? (
+                    <TouchableOpacity
+                      style={[
+                        styles.checkbox,
+                        efectos.especial && styles.checkboxActivo
+                      ]}
+                      onPress={() =>
+                        setEfectos({
+                          ...efectos,
+                          especial: !efectos.especial
+                        })
+                      }
+                    >
+                      <Text style={styles.checkboxTexto}>
+                        {efectos.especial ? "✓ Activo" : "Activar"}
+                      </Text>
+                    </TouchableOpacity>
+                  ) : (
+                    <TextInput
+                      style={styles.efectoInput}
+                      keyboardType="numeric"
+                      value={efectos.especial}
+                      onChangeText={(text) =>
+                        setEfectos({ ...efectos, especial: text })
+                      }
+                    />
+                  )}
+                </>
+              )}
+
+            </View>
+
+          ) : (
+
+            <View style={styles.efectosContainer}>
+
+              <Text>Ataque extra: {efectos.ataqueExtra}</Text>
+              <Text>Curación: {efectos.curacionRonda}</Text>
+              <Text>Puntuación extra: {efectos.puntuacionExtra}</Text>
+              <Text>Envenenamiento: {efectos.envenenamiento}</Text>
+              <Text>Escudo: {efectos.escudo}</Text>
+              <Text>Resistencia: {efectos.resistencia}</Text>
+
+              {personaje.efectoEspecial && (
+                <Text>
+                  {personaje.efectoEspecial.nombre}: {efectos.especial}
                 </Text>
+              )}
 
-                {personaje.efectoEspecial.tipo === "boolean" ? (
-                  <TouchableOpacity
-                    style={[
-                      styles.checkbox,
-                      efectos.especial && styles.checkboxActivo
-                    ]}
-                    onPress={() =>
-                      setEfectos({
-                        ...efectos,
-                        especial: !efectos.especial
-                      })
-                    }
-                  >
-                    <Text style={styles.checkboxTexto}>
-                      {efectos.especial ? "✓ Activo" : "Activar"}
-                    </Text>
-                  </TouchableOpacity>
-                ) : (
-                  <TextInput
-                    style={styles.efectoInput}
-                    keyboardType="numeric"
-                    value={efectos.especial}
-                    onChangeText={(text) =>
-                      setEfectos({ ...efectos, especial: text })
-                    }
-                  />
-                )}
-              </>
-            )}
+            </View>
 
-          </View>
+          )}
+
         </View>
 
         <Text style={styles.nombre}>{personaje.nombre}</Text>
 
         {/* VIDA */}
-        <View style={styles.vidaContainer}>
-          <TouchableOpacity
-            style={[styles.botonVida, styles.botonRestar]}
-            onPress={() => setModo("restar")}
-          >
-            <Text style={styles.textoBotonVida}>-</Text>
-          </TouchableOpacity>
 
+        {esPropietario && (
+          <View style={styles.vidaContainer}>
+
+            <TouchableOpacity
+              style={[styles.botonVida, styles.botonRestar]}
+              onPress={() => setModo("restar")}
+            >
+              <Text style={styles.textoBotonVida}>-</Text>
+            </TouchableOpacity>
+
+            <View style={styles.vidaBox}>
+              <Text style={styles.vidaTexto}>
+                ❤️ {vidaActual}/{personaje.vidaMax}
+              </Text>
+            </View>
+
+            <TouchableOpacity
+              style={[styles.botonVida, styles.botonSumar]}
+              onPress={() => setModo("sumar")}
+            >
+              <Text style={styles.textoBotonVida}>+</Text>
+            </TouchableOpacity>
+
+          </View>
+        )}
+
+        {!esPropietario && (
           <View style={styles.vidaBox}>
             <Text style={styles.vidaTexto}>
               ❤️ {vidaActual}/{personaje.vidaMax}
             </Text>
           </View>
+        )}
 
-          <TouchableOpacity
-            style={[styles.botonVida, styles.botonSumar]}
-            onPress={() => setModo("sumar")}
-          >
-            <Text style={styles.textoBotonVida}>+</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* INPUT VIDA */}
-        {modo && (
+        {modo && esPropietario && (
           <View style={styles.inputContainer}>
+
             <TextInput
               placeholder="Cantidad"
               keyboardType="numeric"
@@ -296,23 +333,28 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo, userna
             >
               <Text style={styles.textoConfirmar}>Confirmar</Text>
             </TouchableOpacity>
+
           </View>
         )}
 
         {/* PASIVA */}
+
         <View style={styles.pasivaBox}>
           <Text style={styles.tituloPasiva}>Pasiva</Text>
           <Text style={styles.descripcionPasiva}>
             {personaje.pasiva}
           </Text>
         </View>
+
       </View>
 
       {/* HABILIDADES */}
+
       <Text style={styles.tituloSeccion}>Habilidades</Text>
 
       {personaje.habilidades.map((h, index) => (
         <View key={index} style={styles.habilidadContainer}>
+
           <View
             style={[
               styles.habilidadHeader,
@@ -334,6 +376,7 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo, userna
               {h.descripcion}
             </Text>
           </View>
+
         </View>
       ))}
 
@@ -383,6 +426,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 8,
     borderRadius: 20,
+    marginBottom: 15,
   },
 
   vidaTexto: {
