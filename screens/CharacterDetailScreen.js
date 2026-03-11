@@ -23,7 +23,8 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo, userna
   const [cantidad, setCantidad] = useState("");
   const [modo, setModo] = useState(null);
 
-  const [efectos, setEfectos] = useState({
+  const [efectos, setEfectos] = useState(
+  personaje.efectos || {
     ataqueExtra: "",
     curacionRonda: "",
     puntuacionExtra: "",
@@ -32,8 +33,8 @@ export default function CharacterDetailScreen({ route, equipo, setEquipo, userna
     resistencia: "",
     especial:
       personaje.efectoEspecial?.tipo === "boolean" ? false : "",
-  });
-
+  }
+);
   /* =========================
         GUARDAR EFECTOS
   ========================= */

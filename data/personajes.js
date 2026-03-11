@@ -487,7 +487,7 @@ export const personajes = [
       { dado: 2, nombre: "Primera Postura: Corte de la Superficie Serena", descripcion: "Inflige 6 de daño" },
       { dado: 5, nombre: "Segunda Postura: Calma", descripcion: "Destruye su pasiva e inflige 25 de daño (solo se puede usar una vez)"},
       { dado: 8, nombre: "Tercera Postura: Flujo Incesante", descripcion: "Inflige (dado * 4) de daño"},
-      { dado: 10, nombre: "Cuarta Postura: Muro de corriente Protectora", descripcion: "Inflige 14 de daño y pone un escudo al tanque de 5 de vida"},
+      { dado: 10, nombre: "Cuarta Postura: Muro de corriente Protectora", descripcion: "Inflige 14 de daño y pone un escudo al tanque de 12 de vida"},
       { dado: 12, nombre: "Quinta Postura: Marea", descripcion: "Inflige (dados*4) de daño"}
     ]
   },
@@ -501,7 +501,7 @@ export const personajes = [
     pasiva: "Si hay otro aliado en combate, Tanjiro no puede ser tanque pero tampoco puede morir.",
     habilidades: [
       { dado: 2, nombre: "Corte de Agua Serena", descripcion: "Inflige 6 de daño" },
-      { dado: 5, nombre: "Determinación", descripcion: "Inflige 8 de daño, cura 8 a un aliado o gana un escudo de 2 de vida" },
+      { dado: 5, nombre: "Determinación", descripcion: "Inflige 8 de daño o cura 8 a un aliado o todos los aliados en combate ganan un escudo de 2 de vida" },
       { dado: 8, nombre: "Aprendizaje", descripcion: "Tanjiro puede aprender la cuarta habilidad de un aliado en combate (Permanente), puede volver a gastar un action point en cambiar por otra habilidad"},
       { dado: 10, nombre: "Vínculo Inquebrantable", descripcion: "Invoca a un cazador de tu elección. El y Tanjiro activan su segunda habilidad"},
       { dado: 12, nombre: "Golpe Final", descripcion: "Inflige 15 de daño (si el enemigo tiene 15 o menos de vida, esta habilidad cuesta 4 menos)"}
@@ -519,7 +519,7 @@ export const personajes = [
       { dado: 2, nombre: "Corte Maravilloso!", descripcion: "Inflige 5 de daño" },
       { dado: 5, nombre: "Interposición Espectacular!", descripcion: "Pasiva: Si un cazador fuera a morir en el juego, sacalo de combate, cambia de lugar con el y recibe el daño (Permanente)" },
       { dado: 8, nombre: "Partitura Asombrosa!", descripcion: "Pasiva: Contraca con 5 de daño al ser atacado (Permanente)"},
-      { dado: 10, nombre: "Resistencia Increible!", descripcion: "Se cura 15 y gana un escudo de 5 de vida"},
+      { dado: 10, nombre: "Resistencia Increible!", descripcion: "Se cura 15 y gana un escudo de 10 de vida"},
       { dado: 12, nombre: "Ritmo Perfecto!", descripcion: "Se cura 10 y recibes 4 action points"}
     ]
   },
@@ -629,7 +629,7 @@ export const personajes = [
     pasiva: "Tienen dos habilidades, puedes activar la que quieras",
     habilidades: [
       { dado: 2, nombre: "Tratamiento Dual", descripcion: "Cura 3 / Un aliado tiene +1 en su proxima tirada" },
-      { dado: 5, nombre: "Barrera y Debilitación", descripcion: "Da 4 de escudo a un aliado en combate / El enemigo tiene -1 en dados la proxima ronda" },
+      { dado: 5, nombre: "Barrera y Debilitación", descripcion: "Da 5 de escudo a un aliado en combate / El enemigo tiene -1 en dados la proxima ronda" },
       { dado: 8, nombre: "Terapia y toxinas", descripcion: " Cura a dos alidos 4 de vida / Envenena al enemigo por 1 de vida"},
       { dado: 10, nombre: "Apoyo Estratégico", descripcion: "Tiras 3 dados puedes escoger si curar o atacar con cada dado"},
       { dado: 12, nombre: "Sello Médico de Supresión Demoníaca", descripcion: "Pasiva: No necesitan tirar los dados para avanzar por el mapa, pueden teletransportarse (Permanente)"}

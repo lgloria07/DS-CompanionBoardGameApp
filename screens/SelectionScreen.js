@@ -68,7 +68,22 @@ export default function SeleccionScreen({
 
       const nuevoEquipo = [
         ...equipo,
-        { ...personaje, vidaActual: personaje.vidaMax }
+        {
+          ...personaje,
+          vidaActual: personaje.vidaMax,
+          efectos: {
+            ataqueExtra: "",
+            curacionRonda: "",
+            puntuacionExtra: "",
+            envenenamiento: "",
+            escudo: "",
+            resistencia: "",
+            especial:
+              personaje.efectoEspecial?.tipo === "boolean"
+                ? false
+                : ""
+          }
+        }
       ];
 
       setEquipo(nuevoEquipo);
