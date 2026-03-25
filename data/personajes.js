@@ -182,7 +182,7 @@ export const personajes = [
     type: "Upper",
     imagen: require("../assets/characters/gyokko.jpg"),
     vidaMax: 48,
-    pasiva: "Puede moverse entre casillas de demonio desocupadas",
+    pasiva: "Puede moverse entre casillas de demonio desocupadas (debe hacerlo al inicio de la ronda, no activa action point del cazador)",
     habilidades: [
       { dado: 2, nombre: "Escamas mortales", descripcion: "Inflige 5 de daño, se cura 2, y tiene +1 en su proxima tirada" },
       { dado: 5, nombre: "10,000 peces de arcilla deslizantes", descripcion: "Inflige 10 de daño (+4 por enemigo en combate)"},
