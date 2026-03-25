@@ -46,8 +46,8 @@ export const personajes = [
     habilidades: [
       { dado: 2, nombre: "Primera postura: Corte de serpiente retorcida", descripcion: "Inflige 4 de daño y tienes +2 en tu siguiente tirada " },
       { dado: 5, nombre: "Segunda postura: Espiral de serpiente inmovilizadora", descripcion: "Inflige 10 de daño y tu siguiente ataque tiene +5" },
-      { dado: 8, nombre: "Tercera postura: Colmillo venenoso de serpiente pequeña", descripcion: "Pasiva: Envenena al enemigo por 4 de daño. Se cura 8 de vida" },
-      { dado: 10, nombre: "Cuarta postura: Cabezas de serpientes gemelas", descripcion: "Pasiva: Usar a Iguru no gasta action points (1 vez por ronda. (Permanente)"},
+      { dado: 8, nombre: "Tercera postura: Colmillo venenoso de serpiente pequeña", descripcion: "Envenena al enemigo por 3 de daño. Se cura 7 de vida" },
+      { dado: 10, nombre: "Cuarta postura: Cabezas de serpientes gemelas", descripcion: "Pasiva: Usar a Iguro no gasta action points (1 vez por ronda). (Permanente)"},
       { dado: 12, nombre: "Quinta postura: Serpiente deslizante", descripcion: "Elimina la pasiva del enemigo y su primer poder (Permanente)" }
     ],
   },
@@ -58,13 +58,13 @@ export const personajes = [
     type: "Boss",
     imagen: require("../assets/characters/muzan.jpg"),
     vidaMax: 100,
-    pasiva: "Inflige daño igual a la tirada en los dados. El resto de demonios tiene +1 en sus dados",
+    pasiva: "Muzan utiliza 3 dados e inflige daño igual a la tirada en los dados. El resto de demonios tiene +1 en sus dados",
     habilidades: [
-      { dado: 2, nombre: "Fuerza demoniaca", descripcion: "Inflige 8 de daño, se cura 8"},
-      { dado: 5, nombre: "Danza del desmembramiento", descripcion: "Inflige 12 de daño a todos los enemigos en combate"},
-      { dado: 8, nombre: "Sangre del rey Carmesí", descripcion: "Se cura 30 de vida (max. 2 veces)"},
-      { dado: 10, nombre: "Tormenta de carne ", descripcion: "Inflige 10 de daño y desbloquea a un demonio (max. 2 veces)"},
-      { dado: 12, nombre: "Sangre oscura, raíces espinozas", descripcion: "Mata al tanque e inflige 5 de daño a todos los enemigos en combate" }
+      { dado: 5, nombre: "Fuerza demoniaca", descripcion: "Inflige 8 de daño, se cura 8"},
+      { dado: 8, nombre: "Danza del desmembramiento", descripcion: "Inflige 12 de daño a todos los enemigos en combate"},
+      { dado: 11, nombre: "Sangre del rey Carmesí", descripcion: "Se cura 30 de vida (max. 3 veces)"},
+      { dado: 13, nombre: "Tormenta de carne ", descripcion: "Inflige 10 de daño y desbloquea a un demonio (max. 2 veces)"},
+      { dado: 16, nombre: "Sangre oscura, raíces espinozas", descripcion: "Mata al tanque e inflige 5 de daño a todos los enemigos en combate" }
     ],
   },
   {
@@ -130,7 +130,7 @@ export const personajes = [
     vidaActual: 1,
 
     pasiva:
-      "Cada ronda, crea un demonio en otra casilla (si hay disponibles). No puede morir hasta que todos su demonios hayan sido derrotados, inflige 2 de daño cada ronda",
+      "Cada ronda, crea un demonio en otra casilla (si hay disponibles). No puede morir hasta que todos su demonios hayan sido derrotados, inflige 3 de daño cada ronda. No cuenta como demonio activo",
 
     demonios: [
       {
@@ -252,7 +252,7 @@ export const personajes = [
       { dado: 5, nombre: "Pesadilla de Ensueño", descripcion: "Inflige 5 de daño, se cura 4 y tiene +1 en su siguiente tirada" },
       { dado: 8, nombre: "Arte Demoníaco: Inducción al Sueño Profundo", descripcion: "Inflige 4 de daño y duerme a cualquier un enemigo en combate (solo puede despertar cuando es golpeado)" },
       { dado: 10, nombre: "Sueño del Tren Infinito", descripcion: "Duerme a todos los enemigos que no estén en combate (los cazadores deben gastar un action point para despertarlos) (Permanente)."},
-      { dado: 12, nombre: "Pesadilla Colectiva", descripcion: "Duerme profundamente a un enemigo en el juego, despierta hasta sacar dados pares"}
+      { dado: 12, nombre: "Pesadilla Colectiva", descripcion: "Duerme profundamente a un enemigo en el juego, despierta hasta sacar dados pares (le inflige 2 de daño cada ronda)"}
     ]
   },
   {
@@ -414,7 +414,7 @@ export const personajes = [
     type: "Demon",
     imagen: require("../assets/characters/commondemon.webp"),
     vidaMax: 15,
-    pasiva: "Obtiene +10 de daño si muzan está en combate",
+    pasiva: "Obtiene +10 de daño si Muzan está en combate",
     habilidades: [
       { dado: 2, nombre: "Golpe", descripcion: "Inflige 3 de daño" },
       { dado: 5, nombre: "Golpe II", descripcion: "Inflige 5 de daño" },
@@ -470,7 +470,7 @@ export const personajes = [
     habilidades: [
       { dado: 2, nombre: "Destilación", descripcion: "Aumenta 1 el daño del veneno" },
       { dado: 5, nombre: "Estocada Médica", descripcion: "Inflige 4 de daño y se cura 5 de vida" },
-      { dado: 8, nombre: "Antidoto del Pilar del Insecto", descripcion: "Quita todos los efectos negativos y cura 5 de vida al equipo"},
+      { dado: 8, nombre: "Antidoto del Pilar del Insecto", descripcion: "Quita todos los efectos negativos y cura 10 de vida al equipo"},
       { dado: 10, nombre: "Regeneración Mariposa", descripcion: "Inflige 3 de daño por cada punto de envenenamiento del enemigo, envenena con 3 de daño al enemigo"},
       { dado: 12, nombre: "Danza del insecto", descripcion: "Inflige 12 de daño y el enemigo no se puede curar (Permanente)"}
     ]
@@ -488,7 +488,7 @@ export const personajes = [
       { dado: 5, nombre: "Segunda Postura: Calma", descripcion: "Destruye su pasiva e inflige 25 de daño (solo se puede usar una vez)"},
       { dado: 8, nombre: "Tercera Postura: Flujo Incesante", descripcion: "Inflige (dado * 4) de daño"},
       { dado: 10, nombre: "Cuarta Postura: Muro de corriente Protectora", descripcion: "Inflige 14 de daño y pone un escudo al tanque de 12 de vida"},
-      { dado: 12, nombre: "Quinta Postura: Marea", descripcion: "Inflige (dados*4) de daño"}
+      { dado: 12, nombre: "Quinta Postura: Marea", descripcion: "Inflige (dados*5) de daño"}
     ]
   },
   {
@@ -498,13 +498,13 @@ export const personajes = [
     type: "Slayer",
     imagen: require("../assets/characters/tanjiro.webp"),
     vidaMax: 36,
-    pasiva: "Si hay otro aliado en combate, Tanjiro no puede ser tanque pero tampoco puede morir.",
+    pasiva: "Infliges uno de tus dados como daño cada ronda. Los cazadores en combate con Tanjiro tienen +1 en los dados",
     habilidades: [
-      { dado: 2, nombre: "Corte de Agua Serena", descripcion: "Inflige 6 de daño" },
-      { dado: 5, nombre: "Determinación", descripcion: "Inflige 8 de daño o cura 8 a un aliado o todos los aliados en combate ganan un escudo de 2 de vida" },
+      { dado: 2, nombre: "Corte de Agua Serena", descripcion: "Inflige 6 de daño"},
+      { dado: 5, nombre: "Determinación", descripcion: "Inflige 8 de daño o cura 8 a ti o un aliado o todos los aliados en combate ganan +1 en su siguiente tirada" },
       { dado: 8, nombre: "Aprendizaje", descripcion: "Tanjiro puede aprender la cuarta habilidad de un aliado en combate (Permanente), puede volver a gastar un action point en cambiar por otra habilidad"},
       { dado: 10, nombre: "Vínculo Inquebrantable", descripcion: "Invoca a un cazador de tu elección. El y Tanjiro activan su segunda habilidad"},
-      { dado: 12, nombre: "Golpe Final", descripcion: "Inflige 15 de daño (si el enemigo tiene 15 o menos de vida, esta habilidad cuesta 4 menos)"}
+      { dado: 12, nombre: "Golpe Final", descripcion: "Inflige 15 de daño (si el enemigo tiene 20 o menos de vida, esta habilidad cuesta 4 menos)"}
     ]
   },
   {
@@ -534,9 +534,9 @@ export const personajes = [
     habilidades: [
       { dado: 2, nombre: "Primera Postura: Rugido de la llama", descripcion: "Inflige 5 de daño" },
       { dado: 5, nombre: "Segunda Postura: Embustión", descripcion: "Tu siguiente ataque hace (dados+5) de daño" },
-      { dado: 8, nombre: "Tercera Postura: Marca Ígnea", descripcion: "Inflige 6 de daño y te quema cada ronda el daño-1 (4,3,2,1)"},
+      { dado: 8, nombre: "Tercera Postura: Marca Ígnea", descripcion: "Inflige 10 de daño y curate 10"},
       { dado: 10, nombre: "Cuarta postura: Corte Abrasador", descripcion: "Inflige 14 de daño y quema un dado enemigo la siguiente ronda"},
-      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Inflige el daño que quieras (max 35) a ti y al enemigo"}
+      { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Inflige el daño que quieras (max 40) a ti y al enemigo"}
     ]
   },
   {
@@ -546,13 +546,13 @@ export const personajes = [
     type: "Slayer",
     imagen: require("../assets/characters/inosuke.jpg"),
     vidaMax: 30,
-    pasiva: "Inosuke tiene dos habilidades, la primera funciona cuando tiene mas de 15 de vida, la segunda cuando tiene 15 o menos. Inosuke tiene +5 de daño / Inosuke tiene +5 de resistencia",
+    pasiva: "Puedes elegir que habilidad usar, si sacas exactamente el numero con los dados, activas las dos",
     habilidades: [
-      { dado: 2, nombre: "Colmillo impulsivo", descripcion: "Inflige 4 de daño / Se cura 4 de vida" },
-      { dado: 5, nombre: "Orgullo Salvaje", descripcion: "Pasiva: Insouke es inmune a efectos negativos (Permanente)" },
-      { dado: 8, nombre: "Carga del jabalí", descripcion: "Corre a otro combate e inflige 8 de daño al enemigo / Corre a otro combate y se cura 10 de vida"},
-      { dado: 10, nombre: "Reflejo feral", descripcion: "Inflige 12 de daño / Refleja el siguiente ataque que reciba y se cura 5"},
-      { dado: 12, nombre: "Dios de la montaña", descripcion: "Inflige 7 de daño, se cura 7, resiste 5 de daño la siguiente ronda, hace +5 en su siguiente golpe y tiene +1 en su siguiente tirada"}
+      { dado: 2, nombre: "Colmillo impulsivo", descripcion: "Inflige 6 de daño / Se cura 6 de vida" },
+      { dado: 5, nombre: "Orgullo Salvaje", descripcion: "Pasiva: Insouke es inmune a efectos negativos (Permanente) / Inosuke copia los efectos positivos de un aliado en combate" },
+      { dado: 8, nombre: "Carga del jabalí", descripcion: "Corre a otro combate e inflige 12 de daño al enemigo / Corre a otro combate y gana 12 de escudo"},
+      { dado: 10, nombre: "Reflejo feral", descripcion: "Inflige 14 de daño / Refleja el siguiente ataque que reciba y se cura 10"},
+      { dado: 12, nombre: "Dios de la montaña", descripcion: "Inflige 10 de daño, se cura 10, resiste 5 de daño la siguiente ronda, hace +5 en su siguiente golpe y tiene +2 en su siguiente tirada"}
     ]
   },
   {
@@ -581,10 +581,10 @@ export const personajes = [
     pasiva: "Si le salen dados pares, los duplica cuando se mueve. Cuando llega a una casilla de demonio tiene +2 en su tirada",
     habilidades: [
       { dado: 2, nombre: "Primera Postura: Destello del Relámpago I", descripcion: "Pasiva: Si hay una mujer en combate inflige +3 (Permanente)"},
-      { dado: 5, nombre: "Primera Postura: Destello del Relámpago II", descripcion: "Inflige 7 de daño y sale del combate"},
-      { dado: 8, nombre: "Primera Postura: Destello del Relámpago III", descripcion: "Inflige 10 de daño dividido entre los demonios en juego"},
+      { dado: 5, nombre: "Primera Postura: Destello del Relámpago II", descripcion: "Inflige 7 de daño y sale del combate (solo se puede usar si hay aliados en combate)"},
+      { dado: 8, nombre: "Primera Postura: Destello del Relámpago III", descripcion: "Inflige 11 de daño dividido entre los demonios en juego"},
       { dado: 10, nombre: "Primera Postura: Destello del Relámpago IV", descripcion: "Inflige 12 de daño (no gasta action point)"},
-      { dado: 12, nombre: "Primera Postura: Destello del Relámpago V", descripcion: "Tiras 3 veces los dos dados, activas la habilidad que te salga "}
+      { dado: 12, nombre: "Primera Postura: Destello del Relámpago V", descripcion: "Tiras 3 veces los dos dados, activas la habilidad que te salga"}
     ]
   },
   {
@@ -599,7 +599,7 @@ export const personajes = [
       { dado: 2, nombre: "Brisa Floral", descripcion: "Curar 4" },
       { dado: 5, nombre: "Moneda Aleatoria", descripcion: "Tira los dados, uno cura y otro ataca" },
       { dado: 8, nombre: "Loto Gemelo", descripcion: "Pasiva: La curación que haga también se inflige de daño"},
-      { dado: 10, nombre: "Resplandor Sereno", descripcion: "Cura 10 de vida a un aliado en combate"},
+      { dado: 10, nombre: "Resplandor Sereno", descripcion: "Cura 12 de vida a un aliado en combate"},
       { dado: 12, nombre: "Mansión de la mariposa", descripcion: "Pasiva: Por el resto del juego tira un dado y cura a un aliado (Permanente)"}
     ]
   },
@@ -609,12 +609,12 @@ export const personajes = [
     nombre: "Genya Shigazunawa",
     type: "Slayer",
     imagen: require("../assets/characters/genya.jpg"),
-    vidaMax: 25,
+    vidaMax: 28,
     pasiva: "Puede atacar a cualquier otro demonio en combate (hace -2 de daño)",
     habilidades: [
       { dado: 2, nombre: "Disparo Impulsivo", descripcion: "Inflige 4 de daño" },
       { dado: 5, nombre: "Recarga", descripcion: "Si logras activar tu siguiente habilidad, la activas dos veces)" },
-      { dado: 8, nombre: "Mordida de Sangre Demoníaca", descripcion: "Inflige 3 de daño, se cura 3 y tiene +1 en su proxima tirada"},
+      { dado: 8, nombre: "Mordida de Sangre Demoníaca", descripcion: "Inflige 8 de daño y tienes +1 en tu proxima tirada de dados"},
       { dado: 10, nombre: "Devora-Demonios", descripcion: "Copia la segunda habilidad de el demonio y la usas (puede volver a activar esta habilidad para cambiarla)"},
       { dado: 12, nombre: "Escopeta Nichirin", descripcion: "Realiza 4 disparos: 7,6,5,4"}
     ]
@@ -626,13 +626,13 @@ export const personajes = [
     type: "Support",
     imagen: require("../assets/characters/yushirotamayo.jpg"),
     vidaMax: 20,
-    pasiva: "Tienen dos habilidades, puedes activar la que quieras",
+    pasiva: "No necesitan tirar los dados para avanzar por el mapa, pueden teletransportarse. Puedes elegir que habilidad usar",
     habilidades: [
       { dado: 2, nombre: "Tratamiento Dual", descripcion: "Cura 3 / Un aliado tiene +1 en su proxima tirada" },
       { dado: 5, nombre: "Barrera y Debilitación", descripcion: "Da 5 de escudo a un aliado en combate / El enemigo tiene -1 en dados la proxima ronda" },
       { dado: 8, nombre: "Terapia y toxinas", descripcion: " Cura a dos alidos 4 de vida / Envenena al enemigo por 1 de vida"},
       { dado: 10, nombre: "Apoyo Estratégico", descripcion: "Tiras 3 dados puedes escoger si curar o atacar con cada dado"},
-      { dado: 12, nombre: "Sello Médico de Supresión Demoníaca", descripcion: "Pasiva: No necesitan tirar los dados para avanzar por el mapa, pueden teletransportarse (Permanente)"}
+      { dado: 12, nombre: "Sello Médico de Supresión Demoníaca", descripcion: "Pasiva: Siempre utilizan sus dos habilidades con doble de efectividad (Permanente)"}
     ]
   },
   {
@@ -642,12 +642,12 @@ export const personajes = [
     type: "Mage",
     imagen: require("../assets/characters/sabito.webp"),
     vidaMax: 0,
-    pasiva: "No puede agarrar cofres, activar demonios ni ser tanque, pero no tampoco puede morir (si es el ultimo cazador en combate, los cazadores pierden)",
+    pasiva: "No puede agarrar cofres, activar demonios ni ser tanque, pero no tampoco puede morir y puede atravesar paredes (si es el ultimo cazador en combate, los cazadores pierden)",
     habilidades: [
       { dado: 2, nombre: "Corte del Espíritu Persistente", descripcion: "Inflige 2 de daño"},
       { dado: 5, nombre: "Filo del Recuerdo", descripcion: "Inflige (1 dado -1) de daño" },
-      { dado: 8, nombre: "Filo del Recuerdo", descripcion: "Inflige 3 de daño y el enemigo tiene -1 en su siguiente tirada"},
-      { dado: 10, nombre: "Guía Etérea", descripcion: "Pasiva: Usar a sabito no gasta action points (1 vez por ronda) (Permanente)"},
+      { dado: 8, nombre: "Filo del Recuerdo", descripcion: "Pasiva: Usar a sabito no gasta action points (1 vez por ronda) (Permanente)"},
+      { dado: 10, nombre: "Guía Etérea", descripcion: "Inflige 3 de daño y el enemigo tiene -2 en su siguiente tirada"},
       { dado: 12, nombre: "Voluntad Heredada del Discípulo Caído", descripcion: "Pasiva: En el combate en el que él esté, los aliados tienen +3 de daño (Permanente)"}
     ]
   },
@@ -658,7 +658,7 @@ export const personajes = [
     type: "Support",
     imagen: require("../assets/characters/esposas.jpg"),
     vidaMax: 22,
-    pasiva: "Cada ronda, si un aliado en combate tiene menos de 12 de vida, cúralo 2",
+    pasiva: "Cada ronda, si un aliado en combate tiene menos de 15 de vida, cúralo 3",
     habilidades: [
       { dado: 2, nombre: "Cuidado de las Kunoichi", descripcion: "Cura 2 de vida a todos los aliados en combate" },
       { dado: 5, nombre: "Asistencia del Trío del Sonido", descripcion: "Inflige 2 de daño, cura 2 a un aliado y tienes +1 en tu siguiente tirada" },

@@ -24,9 +24,9 @@ export default function RulesScreen() {
     "Si el tanque muere durante el turno enemigo, los cazadores quedan expuestos y el demonio puede atacar a cualquiera.",
     "Los cazadores eliminan todos los efectos negativos al salir de combate",
     "El cazador que dé el golpe final a un demonio obtendrá +1 en sus tiradas de dado por el resto del juego (se puede acumular).",
-    "Si un demonio mata a un cazador, lo devora, curandose 8 de vida y haciendo +1 de dañon(No aplica para Muzan)",
+    "Si un demonio mata a un cazador, lo devora, curandose 8 de vida y obteniendo +1 de daño (No aplica para Muzan)",
     "Los efectos negativos de demonios desaparen hasta que el demonio muera",
-    "Cuando llegas a una casilla de objeto, desbloquealo, si no es una maldición puedes usarlo cuando quieras",
+    "Cuando llegas a una casilla de objeto puedes desbloquearlo, si no es una maldición puedes usarlo cuando quieras",
     "Los cazadores ganan si derrotan a Muzan.",
     "El demonio gana si mata a todos los cazadores."
   ];
