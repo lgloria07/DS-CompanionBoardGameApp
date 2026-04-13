@@ -122,6 +122,22 @@ export const personajes = [
   {
     id: 8,
     category: "demon",
+    nombre: "Baby Muzan",
+    type: "demon",
+    imagen: require("../assets/characters/babymuzan.webp"),
+    vidaMax: 60,
+    pasiva: "Solo juega y puede morir hasta que Muzan aparezca",
+    habilidades: [
+      { dado: 2, nombre: "Lluvia filosa", descripcion: "Cura 4 a Muzan" },
+      { dado: 5, nombre: "Aire cortante", descripcion: "Inflife 4 de daño a tu enemigo y al de Muzan" },
+      { dado: 8, nombre: "Muro de hielo", descripcion: "En la próxima ronda, Muzan y el bebe tienen +2 en los dados" },
+      { dado: 10, nombre: "Sepultura de cristal", descripcion: "Otorga 6 de escudo a los demonios por cazador en combate (menos el)" },
+      { dado: 12, nombre: "Tormenta del loto azul", descripcion: "La primera vez que Muzan muera revive con 30 de vida (1 uso)" }
+    ],
+  },
+  {
+    id: 9,
+    category: "demon",
     tipo: "invocador",
     nombre: "Hantengu",
     type: "Upper",
@@ -176,7 +192,7 @@ export const personajes = [
     ],
   },
   {
-    id: 9,
+    id: 10,
     category: "demon",
     nombre: "Gyokko",
     type: "Upper",
@@ -192,7 +208,7 @@ export const personajes = [
     ]
   },
   {
-    id: 10,
+    id: 11,
     category: "demon",
     nombre: "Gyutaro",
     type: "Upper",
@@ -208,7 +224,7 @@ export const personajes = [
     ]
   },
   {
-    id: 11,
+    id: 12,
     category: "demon",
     nombre: "Nakime",
     type: "Upper",
@@ -224,7 +240,7 @@ export const personajes = [
     ]
   },
   {
-    id: 12,
+    id: 13,
     category: "demon",
     nombre: "Kaigaku",
     type: "Upper",
@@ -240,7 +256,7 @@ export const personajes = [
     ]
   },
   {
-    id: 13,
+    id: 14,
     category: "demon",
     nombre: "Enmu",
     type: "Lower",
@@ -256,7 +272,7 @@ export const personajes = [
     ]
   },
   {
-    id: 14,
+    id: 15,
     category: "demon",
     nombre: "Daki",
     type: "Upper",
@@ -272,7 +288,7 @@ export const personajes = [
     ]
   },
   {
-    id: 15,
+    id: 16,
     category: "demon",
     nombre: "Rui",
     type: "Lower",
@@ -292,7 +308,7 @@ export const personajes = [
     }
   },
   {
-    id: 16,
+    id: 17,
     category: "demon",
     nombre: "Susamaru",
     type: "Demon",
@@ -308,7 +324,7 @@ export const personajes = [
     ]
   },
   {
-    id: 17,
+    id: 18,
     category: "demon",
     nombre: "Yahaba",
     type: "Demon",
@@ -324,7 +340,23 @@ export const personajes = [
     ]
   },
   {
-    id: 18,
+    id: 19,
+    category: "demon",
+    nombre: "Spider Demon Son",
+    type: "Demon",
+    imagen: require("../assets/characters/spiderson.webp"),
+    vidaMax: 30,
+    pasiva: "Obtiene +1 dado por cada otra araña en combate",
+    habilidades: [
+      { dado: 2, nombre: "Vector Gemelo", descripcion: "Envenena con 1 al enemigo" },
+      { dado: 5, nombre: "Impulso Direccional", descripcion: "Pasiva: Si sacas 5 en un dado, aumenta +1 el veneno de un cazador" },
+      { dado: 8, nombre: "Eje maldito", descripcion: "Inflige 5 de daño y aumenta el veneno en +2" },
+      { dado: 10, nombre: "Trayectorias Forzadas", descripcion: "Pasiva: Se cura el daño infligido por veneno"},
+      { dado: 12, nombre: "Distorsión del Destino", descripcion: "Pasiva: Si los cazadores sacan 4 en los dados, aumenta +1 el veneno"}
+    ]
+  },
+  {
+    id: 20,
     category: "demon",
     nombre: "Spider Demon Father",
     type: "Demon",
@@ -340,7 +372,7 @@ export const personajes = [
     ]
   },
   {
-    id: 19,
+    id: 21,
     category: "demon",
     nombre: "Spider Demon Mother",
     type: "Demon",
@@ -356,7 +388,7 @@ export const personajes = [
     ]
   },
   {
-    id: 20,
+    id: 22,
     category: "demon",
     nombre: "Kyogai",
     type: "Demon",
@@ -372,7 +404,7 @@ export const personajes = [
     ]
   },
   {
-    id: 21,
+    id: 23,
     category: "demon",
     nombre: "Swamp Demon",
     type: "Demon",
@@ -392,7 +424,7 @@ export const personajes = [
     }
   },
   {
-    id: 22,
+    id: 24,
     category: "demon",
     nombre: "Hand Demon",
     type: "Demon",
@@ -408,7 +440,7 @@ export const personajes = [
     ]
   },
   {
-    id: 23,
+    id: 25,
     category: "demon",
     nombre: "Normal Demon",
     type: "Demon",
@@ -424,7 +456,7 @@ export const personajes = [
     ]
   },
   {
-    id: 24,
+    id: 26,
     category: "slayer",
     nombre: "Muichiro Tokito",
     type: "Mage",
@@ -444,7 +476,23 @@ export const personajes = [
     }
   },
   {
-    id: 25,
+    id: 27,
+    category: "slayer",
+    nombre: "Kagaya Ubuyashiki",
+    type: "Support",
+    imagen: require("../assets/characters/patron.webp"),
+    vidaMax: 15,
+    pasiva: "Tiene -1 de movimiento. No puede morir si hay un aliado en combate, al morir inflige 15 de daño al enemigo.)",
+    habilidades: [
+      { dado: 2, nombre: "Primera postura: Niebla Rasante", descripcion: "Cura 5 al equipo en combate" },
+      { dado: 5, nombre: "Segunda postura: Bruma Envolvente ", descripcion: "Otorgas a un alaido en combate (dados) de escudo"},
+      { dado: 8, nombre: "Tercera postura: Velo protector", descripcion: "Tiras 4 dados, cada dado cura a un cazador en juego"},
+      { dado: 10, nombre: "Cuarta postura: Neblina Dispersa", descripcion: "Revive a un aliado con 5 de vida"},
+      { dado: 12, nombre: "¿Es una nube?", descripcion: "Pasiva: En cada turno, todos los aliados se curan 5 de vida (Permanente)"}
+    ],
+  },
+  {
+    id: 28,
     category: "slayer",
     nombre: "Mitsuri Kanroki",
     type: "Tank",
@@ -460,10 +508,10 @@ export const personajes = [
     ],
   },
   {
-    id: 26,
+    id: 29,
     category: "slayer",
     nombre: "Shinobu Kocho",
-    type: "Support",
+    type: "Mage",
     imagen: require("../assets/characters/shinobu.webp"),
     vidaMax: 28,
     pasiva: "Obtiene +2 de movimiento y envenena con 1 de daño al enemigo cuando llega a un combate",
@@ -476,7 +524,7 @@ export const personajes = [
     ]
   },
   {
-    id: 27,
+    id: 30,
     category: "slayer",
     nombre: "Giyu Tomioka",
     type: "Slayer",
@@ -492,7 +540,7 @@ export const personajes = [
     ]
   },
   {
-    id: 28,
+    id: 31,
     category: "slayer",
     nombre: "Tanjiro Kamado",
     type: "Slayer",
@@ -508,7 +556,7 @@ export const personajes = [
     ]
   },
   {
-    id: 29,
+    id: 32,
     category: "slayer",
     nombre: "Tengen Uzui",
     type: "Tank",
@@ -524,7 +572,7 @@ export const personajes = [
     ]
   },
   {
-    id: 30,
+    id: 33,
     category: "slayer",
     nombre: "Kyojuro Rengoku",
     type: "Slayer",
@@ -534,29 +582,29 @@ export const personajes = [
     habilidades: [
       { dado: 2, nombre: "Primera Postura: Rugido de la llama", descripcion: "Inflige 5 de daño" },
       { dado: 5, nombre: "Segunda Postura: Embustión", descripcion: "Tu siguiente ataque hace (dados+5) de daño" },
-      { dado: 8, nombre: "Tercera Postura: Marca Ígnea", descripcion: "Inflige 10 de daño y curate 10"},
+      { dado: 8, nombre: "Tercera Postura: Marca Ígnea", descripcion: "Inflige (4 dados) de daño y pierde 5 de vida"},
       { dado: 10, nombre: "Cuarta postura: Corte Abrasador", descripcion: "Inflige 14 de daño y quema un dado enemigo la siguiente ronda"},
       { dado: 12, nombre: "Pacto de hermanos V", descripcion: "Inflige el daño que quieras (max 40) a ti y al enemigo"}
     ]
   },
   {
-    id: 31,
+    id: 34,
     category: "slayer",
     nombre: "Inosuke Hashibira",
     type: "Slayer",
     imagen: require("../assets/characters/inosuke.jpg"),
     vidaMax: 30,
-    pasiva: "Puedes elegir que habilidad usar, si sacas exactamente el numero con los dados, activas las dos",
+    pasiva: "Puedes elegir que habilidad usar, si sacas más de lo necesario en los dados, activas ambas",
     habilidades: [
-      { dado: 2, nombre: "Colmillo impulsivo", descripcion: "Inflige 6 de daño / Se cura 6 de vida" },
-      { dado: 5, nombre: "Orgullo Salvaje", descripcion: "Pasiva: Insouke es inmune a efectos negativos (Permanente) / Inosuke copia los efectos positivos de un aliado en combate" },
+      { dado: 2, nombre: "Colmillo impulsivo", descripcion: "Obtienes +1 en tu siguiente tirada / El enemigo tiene -1 en su siguiente tirada" },
+      { dado: 5, nombre: "Orgullo Salvaje", descripcion: "Inflige 7 de daño / Se cura 7" },
       { dado: 8, nombre: "Carga del jabalí", descripcion: "Corre a otro combate e inflige 12 de daño al enemigo / Corre a otro combate y gana 12 de escudo"},
-      { dado: 10, nombre: "Reflejo feral", descripcion: "Inflige 14 de daño / Refleja el siguiente ataque que reciba y se cura 10"},
-      { dado: 12, nombre: "Dios de la montaña", descripcion: "Inflige 10 de daño, se cura 10, resiste 5 de daño la siguiente ronda, hace +5 en su siguiente golpe y tiene +2 en su siguiente tirada"}
+      { dado: 10, nombre: "Reflejo feral", descripcion: "Pasiva: Contrataca con 4 de daño (Permanente) / Pasiva: Inosuke es inmune a efectos negativos y la primera habilidad enemiga (Permanente)"},
+      { dado: 12, nombre: "Dios de la montaña", descripcion: "Pasiva: Los aliados tiran 3 dados"}
     ]
   },
   {
-    id: 32,
+    id: 35,
     category: "slayer",
     nombre: "Nezuko Kamado",
     type: "Tank",
@@ -572,7 +620,7 @@ export const personajes = [
     ]
   },
   {
-    id: 33,
+    id: 36,
     category: "slayer",
     nombre: "Zenitsu Agatsuma",
     type: "Slayer",
@@ -588,7 +636,7 @@ export const personajes = [
     ]
   },
   {
-    id: 34,
+    id: 37,
     category: "slayer",
     nombre: "Kanao Tsuyuri",
     type: "Support",
@@ -596,7 +644,7 @@ export const personajes = [
     vidaMax: 25,
     pasiva: "Cuando llega a un combate, cura 10 al equipo",
     habilidades: [
-      { dado: 2, nombre: "Brisa Floral", descripcion: "Curar 4" },
+      { dado: 2, nombre: "Brisa Floral", descripcion: "Cura 4 a un cazador en combate" },
       { dado: 5, nombre: "Moneda Aleatoria", descripcion: "Tira los dados, uno cura y otro ataca" },
       { dado: 8, nombre: "Loto Gemelo", descripcion: "Pasiva: La curación que haga también se inflige de daño"},
       { dado: 10, nombre: "Resplandor Sereno", descripcion: "Cura 12 de vida a un aliado en combate"},
@@ -604,7 +652,23 @@ export const personajes = [
     ]
   },
   {
-    id: 35,
+    id: 38,
+    category: "slayer",
+    nombre: "Sankonji Urokodaki",
+    type: "Support",
+    imagen: require("../assets/characters/urokodaki.webp"),
+    vidaMax: 26,
+    pasiva: "Al moverse cura 3 de vida a aliados que pase encima",
+    habilidades: [
+      { dado: 2, nombre: "Brisa Floral", descripcion: "Inflige 4 de daño" },
+      { dado: 5, nombre: "Moneda Aleatoria", descripcion: "Pasiva: Si el demonio muere en combate, cura a los cazadores 10 de vida" },
+      { dado: 8, nombre: "Loto Gemelo", descripcion: "Tiras 2 dados, cada uno le da un escudo a un cazador en combate"},
+      { dado: 10, nombre: "Resplandor Sereno", descripcion: "Pasiva: Aliados con escudo tienen +4 de daño (Permanente)"},
+      { dado: 12, nombre: "Mansión de la mariposa", descripcion: "Otorga +2 de daño, 2 de resistencia y +1 en los dados a un aliado en combate (Permanente)"}
+    ]
+  },
+  {
+    id: 39,
     category: "slayer",
     nombre: "Genya Shigazunawa",
     type: "Slayer",
@@ -612,15 +676,15 @@ export const personajes = [
     vidaMax: 28,
     pasiva: "Puede atacar a cualquier otro demonio en combate (hace -2 de daño)",
     habilidades: [
-      { dado: 2, nombre: "Disparo Impulsivo", descripcion: "Inflige 4 de daño" },
-      { dado: 5, nombre: "Recarga", descripcion: "Si logras activar tu siguiente habilidad, la activas dos veces)" },
-      { dado: 8, nombre: "Mordida de Sangre Demoníaca", descripcion: "Inflige 8 de daño y tienes +1 en tu proxima tirada de dados"},
+      { dado: 2, nombre: "Disparo Impulsivo", descripcion: "Inflige 3 de daño" },
+      { dado: 5, nombre: "Recarga", descripcion: "Pasiva: Puede tirar para activar dos veces su habilidad (Permanente)" },
+      { dado: 8, nombre: "Mordida de Sangre Demoníaca", descripcion: "Inflige 6 de daño y tienes +1 en tu proxima tirada de dados"},
       { dado: 10, nombre: "Devora-Demonios", descripcion: "Copia la segunda habilidad de el demonio y la usas (puede volver a activar esta habilidad para cambiarla)"},
       { dado: 12, nombre: "Escopeta Nichirin", descripcion: "Realiza 4 disparos: 7,6,5,4"}
     ]
   },
   {
-    id: 36,
+    id: 40,
     category: "slayer",
     nombre: "Yushiro y Tamayo",
     type: "Support",
@@ -636,7 +700,7 @@ export const personajes = [
     ]
   },
   {
-    id: 37,
+    id: 41,
     category: "slayer",
     nombre: "Sabito",
     type: "Mage",
@@ -652,13 +716,13 @@ export const personajes = [
     ]
   },
   {
-    id: 38,
+    id: 42,
     category: "slayer",
     nombre: "Hinatsuru, Makio y Suma",
     type: "Support",
     imagen: require("../assets/characters/esposas.jpg"),
     vidaMax: 22,
-    pasiva: "Cada ronda, si un aliado en combate tiene menos de 15 de vida, cúralo 3",
+    pasiva: "Cada ronda curan a un aliado en combate 3 de vida",
     habilidades: [
       { dado: 2, nombre: "Cuidado de las Kunoichi", descripcion: "Cura 2 de vida a todos los aliados en combate" },
       { dado: 5, nombre: "Asistencia del Trío del Sonido", descripcion: "Inflige 2 de daño, cura 2 a un aliado y tienes +1 en tu siguiente tirada" },
@@ -668,7 +732,7 @@ export const personajes = [
     ]
   },
   {
-    id: 39,
+    id: 43,
     category: "slayer",
     nombre: "Hotaru Haganezuka",
     type: "Tank",
@@ -684,7 +748,7 @@ export const personajes = [
     ]
   },
   {
-    id: 40,
+    id: 44,
     category: "slayer",
     nombre: "Murata",
     type: "Slayer",
