@@ -34,7 +34,7 @@ export default function SeleccionScreen({
       console.log("Error guardando equipo en Firebase", error);
     }
 
-  };
+  }; //BORAR
 
   const agregarAlEquipo = (personaje) => {
 
